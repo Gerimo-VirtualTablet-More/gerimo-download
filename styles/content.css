@@ -10,6 +10,9 @@
     visibility: hidden;
     transition: opacity 0.4s ease 1s, visibility 0s 1s;
     padding: 20px;
+
+    scrollbar-width: none;           /* Firefox */
+    -ms-overflow-style: none;        /* Internet Explorer/Edge */
 }
 
 .tablet-container.active .website-content {
@@ -70,18 +73,19 @@ h1 {
     align-items: center;
     justify-content: center;
     position: relative;
+      border-radius: 20px 20px 20px 20px;
 }
 
 .btn-filled {
     background: #000000;
     color: #FFFFFF;
-    border-radius: 20px 0 0 20px;
+  
 }
 
 .btn-outlined {
     background: #FFFFFF;
     color: #000000;
-    border-radius: 0 20px 20px 0;
+
 }
 
 .container {
@@ -114,16 +118,18 @@ h1 {
 
 /* Cards */
 .cards-grid {
-    display: grid;
+  display: flex;
+    flex-direction: column;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 24px;
     margin-bottom: 40px;
 }
 
 .card {
+   
     background: #000000;
     border-radius: 12px;
-    padding: 24px;
+    padding: 20px;
     transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
     position: relative;
     border: 1px solid #FFFFFF;
@@ -210,13 +216,13 @@ h1 {
 .card-button.primary {
     background: #000000;
     color: #FFFFFF;
-    border-radius: 20px 0 0 20px;
+    border-radius: 20px 20px 20px 20px;
 }
 
 .card-button.secondary {
     background: #FFFFFF;
     color: #000000;
-    border-radius: 0 20px 20px 0;
+    border-radius: 20px 20px 20px 20px;
 }
 
 /* Features */

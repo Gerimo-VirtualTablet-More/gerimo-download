@@ -16,6 +16,9 @@ body {
     overflow: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+
+    
 }
 
 .tablet-container {
@@ -144,6 +147,7 @@ body {
     .tablet-container.initial {
         transform: translate(-50%, -50%) rotate(-20deg) scale(0.5);
     }
+    
 }
 
 @media (max-width: 768px) {
