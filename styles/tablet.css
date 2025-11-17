@@ -1,0 +1,165 @@
+/* Tablet Styling */
+* {
+    -webkit-tap-highlight-color: transparent;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f5f5f5;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.tablet-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 1000px;
+    height: 750px;
+    transform-origin: center center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.tablet-container.initial {
+    transform: translate(-50%, -50%) rotate(-25deg) scale(0.7);
+}
+
+.tablet-container.active {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    width: 100vw;
+    height: 100vh;
+    cursor: default;
+}
+
+.tablet-edge-bottom {
+    position: absolute;
+    width: 100%;
+    height: 97.8%;
+    background: #B7B7B7;
+    border-radius: 50px;
+    top: 6%;
+    left: 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tablet-container.active .tablet-edge-bottom {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tablet-edge-middle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #E2E2E2;
+    border-radius: 50px;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tablet-container.active .tablet-edge-middle {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tablet-screen {
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    background: #303030;
+    border-radius: 40px;
+    border: 16px solid #000;
+    top: 0;
+    left: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tablet-container.active .tablet-screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    border: 0;
+    top: 0;
+    left: 0;
+}
+
+.home-button {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 25px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.5);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+}
+
+.tablet-container.active .home-button {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tablet-bottom {
+    position: absolute;
+    bottom: -21px;
+    left: 0;
+    right: 0;
+    height: 51px;
+    background: linear-gradient(to bottom, #c8c8c8, #e8e8e8);
+    border-radius: 0 0 50px 50px;
+    z-index: -1;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tablet-container.active .tablet-bottom {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Responsive Tablet Scaling */
+@media (max-width: 1200px) {
+    .tablet-container.initial {
+        transform: translate(-50%, -50%) rotate(-25deg) scale(0.6);
+    }
+}
+
+@media (max-width: 900px) {
+    .tablet-container.initial {
+        transform: translate(-50%, -50%) rotate(-20deg) scale(0.5);
+    }
+}
+
+@media (max-width: 768px) {
+    .tablet-container.initial {
+        transform: translate(-50%, -50%) rotate(-15deg) scale(0.45);
+    }
+}
+
+@media (max-width: 600px) {
+    .tablet-container.initial {
+        transform: translate(-50%, -50%) rotate(-10deg) scale(0.4);
+    }
+}
+
+@media (max-width: 480px) {
+    .tablet-container.initial {
+        transform: translate(-50%, -50%) rotate(-8deg) scale(0.35);
+    }
+}
