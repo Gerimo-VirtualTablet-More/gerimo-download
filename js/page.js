@@ -50,7 +50,7 @@ export class Page {
                             <li>Manual port configuration</li>
                             <li>Multi-monitor work area support</li>
                         </ul>
-                        <button class="card-button primary">Download Windows server</button>
+                        <button id="btn-github" class="card-button primary">Download Windows server</button>
                     </div>
                 </div>
                 <div class="card">
@@ -144,13 +144,21 @@ export class Page {
 
     setupEventHandlers() {
         const playstoreButton = this.contentElement.querySelector('#btn-playstore');
+        const gthubButton = this.contentElement.querySelector('#btn-github');
         if (playstoreButton) {
             playstoreButton.addEventListener('click', () => this.openPlaystore());
+        }else if (gthubButton) {
+            gthubButton.addEventListener('click', () => this.openGithubPage()); 
         }
-    }
+
+        }
 
     openPlaystore() {
         window.open('https://play.google.com/store/apps/details?id=com.gerimo.client', '_blank');
+    }
+
+    openGithubPage() {
+        window.open('https://gerimo-virtualtablet-more.github.io/Server', '_blank');
     }
 
     setupSmoothScroll() {
