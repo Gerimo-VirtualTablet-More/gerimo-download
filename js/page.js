@@ -150,8 +150,13 @@ export class Page {
     }
     
     if (githubButton) {
-        githubButton.addEventListener('click', () => this.openGithubPage()); 
+       githubButton.addEventListener('click', () => this.openGithubPage()); 
     }
+
+    if(playstoreButton){
+        playstoreButton.addEventListener('click', () => this.openPlaystore());
+    }
+}
 
     openPlaystore() {
         window.open('https://play.google.com/store/apps/details?id=com.gerimo.client', '_blank');
@@ -171,10 +176,14 @@ export class Page {
                 }
             });
         });
+    
     }
-}
 
+}
 window.addEventListener('DOMContentLoaded', () => {
     new Tablet('tablet');
     new Page('content');
 });
+
+
+
