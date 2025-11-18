@@ -10,11 +10,10 @@ export class Page {
         this.render();
         this.setupEventHandlers();
         this.setupSmoothScroll();
-        
     }
 
-   render() {
-    this.contentElement.innerHTML = `
+    render() {
+        this.contentElement.innerHTML = `
 <section class="hero">
     <div class="hero-content">
         <h1>Gerimo</h1>
@@ -145,18 +144,14 @@ export class Page {
     setupEventHandlers() {
         const playstoreButton = this.contentElement.querySelector('#btn-playstore');
         const githubButton = this.contentElement.querySelector('#btn-github');
-           if (playstoreButton) {
-        playstoreButton.addEventListener('click', () => this.openPlaystore());
-    }
-    
-    if (githubButton) {
-       githubButton.addEventListener('click', () => this.openGithubPage()); 
-    }
 
-    if(playstoreButton){
-        playstoreButton.addEventListener('click', () => this.openPlaystore());
+        if (playstoreButton) {
+            playstoreButton.addEventListener('click', () => this.openPlaystore());
+        }
+        if (githubButton) {
+            githubButton.addEventListener('click', () => this.openGithubPage());
+        }
     }
-}
 
     openPlaystore() {
         window.open('https://play.google.com/store/apps/details?id=com.gerimo.client', '_blank');
@@ -176,14 +171,10 @@ export class Page {
                 }
             });
         });
-    
     }
-
 }
+
 window.addEventListener('DOMContentLoaded', () => {
     new Tablet('tablet');
     new Page('content');
 });
-
-
-
