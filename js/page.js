@@ -144,11 +144,11 @@ export class Page {
 
     setupEventHandlers() {
         const playstoreButton = this.contentElement.querySelector('#btn-playstore');
-        const gthubButton = this.contentElement.querySelector('#btn-github');
+        const githubButton = this.contentElement.querySelector('#btn-github');
         if (playstoreButton) {
             playstoreButton.addEventListener('click', () => this.openPlaystore());
-        }else if (gthubButton) {
-            gthubButton.addEventListener('click', () => this.openGithubPage()); 
+        }else if (githubButton) {
+            githubButton.addEventListener('click', () => this.openGithubPage()); 
         }
 
         }
