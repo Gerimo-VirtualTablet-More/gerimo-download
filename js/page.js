@@ -145,13 +145,13 @@ export class Page {
     setupEventHandlers() {
         const playstoreButton = this.contentElement.querySelector('#btn-playstore');
         const githubButton = this.contentElement.querySelector('#btn-github');
-        if (playstoreButton) {
-            playstoreButton.addEventListener('click', () => this.openPlaystore());
-        }else if (githubButton) {
-            githubButton.addEventListener('click', () => this.openGithubPage()); 
-        }
-
-        }
+           if (playstoreButton) {
+        playstoreButton.addEventListener('click', () => this.openPlaystore());
+    }
+    
+    if (githubButton) {
+        githubButton.addEventListener('click', () => this.openGithubPage()); 
+    }
 
     openPlaystore() {
         window.open('https://play.google.com/store/apps/details?id=com.gerimo.client', '_blank');
