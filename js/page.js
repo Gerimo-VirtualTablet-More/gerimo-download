@@ -271,7 +271,7 @@ export class Page {
      */
     openGithubPage() {
         window.open(
-            'https://gerimo-virtualtablet-more.github.io/Server',
+            'https://github.com/Gerimo-VirtualTablet-More/Server/releases/tag/RELEASE',
             '_blank'
         );
     }
