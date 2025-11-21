@@ -228,6 +228,14 @@ export class Page {
                 <div class="footer-content">
                     <p>Gerimo © 2025</p>
                 </div>
+                <div class="footer-content">
+                <p>Made with ❤️</p>
+                </div>
+                <div class="footer-content">
+<a href="https://gerimo-virtualtablet-more.github.io/gerimo-privacy-policy/">
+  Privacy Policy
+</a>
+                </div>
             </footer>
         `;
     }
