@@ -252,7 +252,7 @@ export class Page {
         }
 
         if (githubButton) {
-            githubButton.addEventListener('click', () => this.openGithubPage());
+            githubButton.addEventListener('click', () => this.openMicrosoftPage());
         }
     }
 
@@ -269,9 +269,9 @@ export class Page {
     /**
      * Open GitHub page
      */
-    openGithubPage() {
+    openMicrosoftPage() {
         window.open(
-            'https://github.com/Gerimo-VirtualTablet-More/Server/releases/tag/RELEASE',
+            'https://apps.microsoft.com/detail/9P8XMM7RGJRT?hl=neutral&gl=DE&ocid=pdpshare',
             '_blank'
         );
     }
