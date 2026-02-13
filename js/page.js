@@ -103,7 +103,7 @@ export class Page {
 
                         <div class="feature">
                             <h3>🤖 AI Shortcuts</h3>
-                            <p>Create macros and automations in seconds. Trigger with physical stylus buttons.</p>
+                            <p>Create macros and automations in seconds. Trigger them inside a panel or with physical buttons.</p>
                         </div>
 
                         <div class="feature">
