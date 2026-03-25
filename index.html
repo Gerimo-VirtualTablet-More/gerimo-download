@@ -495,10 +495,11 @@ nav {
 }
 .ms-grid span { display: block; border-radius: 1px; }
 
-/* 3. Linux – schwarz mit gelbem Akzent */
+/* 3. Linux – schwarz mit Rahmen */
 .btn-linux {
   background: var(--bg-linux-btn);
   color: #fff;
+  border: 1.5px solid var(--border-light) !important;
   box-shadow: 0 2px 12px rgba(0,0,0,0.18);
 }
 .btn-linux:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
@@ -1727,8 +1728,7 @@ html.light .kb-win-btn {
           document.getElementById('btn-windows').classList.add('active');
           document.getElementById('btn-linux').classList.remove('active');
           document.getElementById('os-windows').style.display='';
-          document.getElementById('os-linux').style.display='none';
-          document.getElementById('side-linux').style.display='none';
+          document.getElementById('os-linux-right').style.display='none';
         ">
           <span class="ms-grid" style="display:inline-grid;gap:2px;width:14px;height:14px;margin-right:8px;vertical-align:middle;">
             <span style="background:#f25022;border-radius:1px;"></span>
@@ -1742,8 +1742,7 @@ html.light .kb-win-btn {
           document.getElementById('btn-linux').classList.add('active');
           document.getElementById('btn-windows').classList.remove('active');
           document.getElementById('os-windows').style.display='none';
-          document.getElementById('os-linux').style.display='';
-          document.getElementById('side-linux').style.display='';
+          document.getElementById('os-linux-right').style.display='';
         ">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px;vertical-align:middle;"><path d="M12.5 2C9.5 2 7 4.4 7 7.5c0 1.7.7 3.2 1.9 4.3-.6 1-1 2.2-1 3.4 0 .8.2 1.6.5 2.3-.8.4-1.4 1.2-1.4 2.2 0 1.4 1.1 2.5 2.5 2.5.6 0 1.1-.2 1.5-.5.7.3 1.5.5 2.3.5 3.3 0 5.7-2.6 5.7-5.7 0-.5-.1-1-.2-1.5.8-.5 1.2-1.4 1.2-2.3 0-.9-.4-1.7-1-2.2.1-.4.1-.8.1-1.3C19 4.4 16.1 2 12.5 2z"/></svg>
           Linux
@@ -1761,8 +1760,11 @@ html.light .kb-win-btn {
           Im Microsoft Store herunterladen
         </a>
       </div>
+    </div>
 
-      <div id="os-linux" class="os-panel" style="display:none;">
+    <!-- Rechte Spalte: Linux-Inhalt -->
+    <div class="os-right-col">
+      <div id="os-linux-right" style="display:none;">
         <div class="distro-list">
           <span class="distro">Ubuntu</span>
           <span class="distro">Debian</span>
@@ -1771,28 +1773,36 @@ html.light .kb-win-btn {
           <span class="distro">Linux Mint</span>
           <span class="distro">Pop!_OS</span>
         </div>
+
+        <!-- .deb Buttons -->
         <div id="deb-download-wrap" style="margin-top:18px;display:flex;flex-direction:column;gap:10px;">
           <span id="deb-loading" style="font-size:0.85rem;opacity:0.6;">Lade neueste Version…</span>
         </div>
-      </div>
-    </div>
 
-    <div class="os-right-col">
-      <div id="side-linux" style="display:none;">
-        <div class="terminal">
-          <div class="terminal-bar">
-            <span class="tbar-dot" style="background:#ff5f57;"></span>
-            <span class="tbar-dot" style="background:#febc2e;"></span>
-            <span class="tbar-dot" style="background:#28c840;"></span>
-            <span class="terminal-title">bash</span>
-            <button id="copy-btn" onclick="copyInstallCmds()" title="Kopieren" style="margin-left:auto;background:rgba(255,255,255,0.08);border:none;border-radius:6px;padding:4px 10px;cursor:pointer;color:#aaa;font-size:0.72rem;display:flex;align-items:center;gap:5px;transition:background 0.2s;">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/></svg>
-              <span id="copy-label">Kopieren</span>
-            </button>
-          </div>
-          <div class="terminal-body">
-            <div><span class="t-prompt">user@linux:~$&nbsp;</span><span class="t-cmd">curl -fsSL https://gerimo.info/KEY.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/gerimo.gpg && echo "deb https://gerimo.info/ ./" | sudo tee /etc/apt/sources.list.d/gerimo.list && sudo apt update && sudo apt install gerimo</span></div>
-            <div><span class="t-cursor"></span></div>
+        <!-- Trenner -->
+        <div id="side-linux-or" style="display:none;align-items:center;gap:12px;margin:20px 0;">
+          <div style="flex:1;height:1px;background:var(--border-color);"></div>
+          <span style="font-size:0.78rem;font-weight:700;opacity:0.4;text-transform:uppercase;letter-spacing:0.1em;">oder</span>
+          <div style="flex:1;height:1px;background:var(--border-color);"></div>
+        </div>
+
+        <!-- Terminal -->
+        <div id="side-linux" style="display:none;">
+          <div class="terminal">
+            <div class="terminal-bar">
+              <span class="tbar-dot" style="background:#ff5f57;"></span>
+              <span class="tbar-dot" style="background:#febc2e;"></span>
+              <span class="tbar-dot" style="background:#28c840;"></span>
+              <span class="terminal-title">bash</span>
+              <button id="copy-btn" onclick="copyInstallCmds()" title="Kopieren" style="margin-left:auto;background:rgba(255,255,255,0.08);border:none;border-radius:6px;padding:4px 10px;cursor:pointer;color:#aaa;font-size:0.72rem;display:flex;align-items:center;gap:5px;transition:background 0.2s;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/></svg>
+                <span id="copy-label">Kopieren</span>
+              </button>
+            </div>
+            <div class="terminal-body">
+              <div><span class="t-prompt">user@linux:~$&nbsp;</span><span class="t-cmd">curl -fsSL https://gerimo.info/docs/KEY.gpg | sudo gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/gerimo.gpg > /dev/null && echo "deb https://gerimo.info/docs/ ./" | sudo tee /etc/apt/sources.list.d/gerimo.list && sudo apt update && sudo apt install gerimo</span></div>
+              <div><span class="t-cursor"></span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -2410,17 +2420,20 @@ function switchOS(os, btn) {
   var linPanel = document.getElementById('os-linux');
   var sideWin  = document.getElementById('side-windows');
   var sideLin  = document.getElementById('side-linux');
+  var sideLinOr = document.getElementById('side-linux-or');
 
   if (os === 'windows') {
     if (winPanel) winPanel.style.display = '';
     if (linPanel) linPanel.style.display = 'none';
     if (sideWin)  sideWin.style.display  = '';
     if (sideLin)  sideLin.style.display  = 'none';
+    if (sideLinOr) sideLinOr.style.display = 'none';
   } else {
     if (winPanel) winPanel.style.display = 'none';
     if (linPanel) linPanel.style.display = '';
     if (sideWin)  sideWin.style.display  = 'none';
-    if (sideLin)  sideLin.style.display  = '';
+    if (sideLin)  sideLin.style.display  = 'flex';
+    if (sideLinOr) sideLinOr.style.display = 'flex';
   }
 }
 
@@ -2673,7 +2686,7 @@ window.addEventListener('scroll', () => {
 
 // ── LINUX COPY COMMANDS ──
 function copyInstallCmds() {
-  var cmds = 'curl -fsSL https://gerimo.info/KEY.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/gerimo.gpg && echo "deb https://gerimo.info/ ./" | sudo tee /etc/apt/sources.list.d/gerimo.list && sudo apt update && sudo apt install gerimo';
+  var cmds = 'curl -fsSL https://gerimo.info/docs/KEY.gpg | sudo gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/gerimo.gpg > /dev/null && echo "deb https://gerimo.info/docs/ ./" | sudo tee /etc/apt/sources.list.d/gerimo.list && sudo apt update && sudo apt install gerimo';
   navigator.clipboard.writeText(cmds).then(function() {
     var label = document.getElementById('copy-label');
     var btn = document.getElementById('copy-btn');
@@ -2718,9 +2731,13 @@ function copyInstallCmds() {
           a.target = '_blank';
           a.rel = 'noopener';
           a.style.display = 'inline-flex';
+          a.style.width = '100%';
+          a.style.boxSizing = 'border-box';
           a.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px;vertical-align:middle;flex-shrink:0;"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-7 2h14v2H5v-2z"/></svg>' + deb.name + ' herunterladen';
           wrap.appendChild(a);
         });
+        document.getElementById('side-linux-or').style.display = 'flex';
+        document.getElementById('side-linux').style.display = '';
       })
       .catch(function() {
         document.getElementById('deb-loading').textContent = 'Fehler beim Laden.';
