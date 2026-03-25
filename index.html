@@ -1771,6 +1771,9 @@ html.light .kb-win-btn {
           <span class="distro">Linux Mint</span>
           <span class="distro">Pop!_OS</span>
         </div>
+        <div id="deb-download-wrap" style="margin-top:18px;display:flex;flex-direction:column;gap:10px;">
+          <span id="deb-loading" style="font-size:0.85rem;opacity:0.6;">Lade neueste Version…</span>
+        </div>
       </div>
     </div>
 
@@ -1782,9 +1785,13 @@ html.light .kb-win-btn {
             <span class="tbar-dot" style="background:#febc2e;"></span>
             <span class="tbar-dot" style="background:#28c840;"></span>
             <span class="terminal-title">bash</span>
+            <button id="copy-btn" onclick="copyInstallCmds()" title="Kopieren" style="margin-left:auto;background:rgba(255,255,255,0.08);border:none;border-radius:6px;padding:4px 10px;cursor:pointer;color:#aaa;font-size:0.72rem;display:flex;align-items:center;gap:5px;transition:background 0.2s;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/></svg>
+              <span id="copy-label">Kopieren</span>
+            </button>
           </div>
           <div class="terminal-body">
-            <div><span class="t-prompt">user@linux:~$&nbsp;</span><span class="t-cmd">sudo apt install gerimo</span></div>
+            <div><span class="t-prompt">user@linux:~$&nbsp;</span><span class="t-cmd">curl -fsSL https://gerimo.info/KEY.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/gerimo.gpg && echo "deb https://gerimo.info/ ./" | sudo tee /etc/apt/sources.list.d/gerimo.list && sudo apt update && sudo apt install gerimo</span></div>
             <div><span class="t-cursor"></span></div>
           </div>
         </div>
@@ -2663,6 +2670,66 @@ window.addEventListener('scroll', () => {
     });
   }
 });
+
+// ── LINUX COPY COMMANDS ──
+function copyInstallCmds() {
+  var cmds = 'curl -fsSL https://gerimo.info/KEY.gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/gerimo.gpg && echo "deb https://gerimo.info/ ./" | sudo tee /etc/apt/sources.list.d/gerimo.list && sudo apt update && sudo apt install gerimo';
+  navigator.clipboard.writeText(cmds).then(function() {
+    var label = document.getElementById('copy-label');
+    var btn = document.getElementById('copy-btn');
+    label.textContent = 'Kopiert!';
+    btn.style.background = 'rgba(52,168,83,0.25)';
+    btn.style.color = '#34a853';
+    setTimeout(function() {
+      label.textContent = 'Kopieren';
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 2000);
+  });
+}
+
+// ── LINUX .DEB DOWNLOAD ──
+(function() {
+  var API = 'https://api.github.com/repos/Gerimo-VirtualTablet-More/gerimo-download/contents/docs/pool/main/g/gerimo';
+  var loaded = false;
+
+  function loadDeb() {
+    if (loaded) return;
+    loaded = true;
+    fetch(API)
+      .then(function(r) { return r.json(); })
+      .then(function(files) {
+        if (!Array.isArray(files)) {
+          document.getElementById('deb-loading').textContent = 'Kein .deb gefunden.';
+          return;
+        }
+        var debs = files.filter(function(f) { return f.name.endsWith('.deb'); });
+        if (!debs.length) {
+          document.getElementById('deb-loading').textContent = 'Kein .deb gefunden.';
+          return;
+        }
+        debs.sort(function(a, b) { return a.name.localeCompare(b.name); });
+        var wrap = document.getElementById('deb-download-wrap');
+        document.getElementById('deb-loading').style.display = 'none';
+        debs.forEach(function(deb) {
+          var a = document.createElement('a');
+          a.className = 'btn-linux';
+          a.href = deb.download_url;
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.style.display = 'inline-flex';
+          a.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px;vertical-align:middle;flex-shrink:0;"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-7 2h14v2H5v-2z"/></svg>' + deb.name + ' herunterladen';
+          wrap.appendChild(a);
+        });
+      })
+      .catch(function() {
+        document.getElementById('deb-loading').textContent = 'Fehler beim Laden.';
+      });
+  }
+
+  var btnLinux = document.getElementById('btn-linux');
+  if (btnLinux) btnLinux.addEventListener('click', loadDeb);
+})();
 
 // ── DARK / LIGHT MODE TOGGLE ──
 (function() {
