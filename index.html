@@ -256,6 +256,63 @@ html.light {
   --key-pressed: #e0e0e0;
 }
 
+/* ── TRANSLATE BAR ── */
+.translate-bar {
+  width: 100%;
+  background: #1a73e8;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 10px 24px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  flex-wrap: wrap;
+  z-index: 300;
+  position: relative;
+}
+.translate-bar span { opacity: 0.9; }
+.translate-bar-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+/* Option B – Direct link button */
+.translate-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.translate-link-btn:hover { background: rgba(255,255,255,0.28); }
+.translate-link-btn svg { flex-shrink: 0; }
+
+.translate-divider {
+  width: 1px; height: 22px;
+  background: rgba(255,255,255,0.3);
+  margin: 0 4px;
+}
+.translate-close {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0 4px;
+  margin-left: 8px;
+  transition: color 0.15s;
+}
+.translate-close:hover { color: #fff; }
+
 /* ── THEME TOGGLE BUTTON ── */
 .theme-toggle {
   width: 40px;
@@ -1328,6 +1385,23 @@ html.light .kb-win-btn {
                 
 
 
+
+<!-- ── TRANSLATE BAR ── -->
+<div class="translate-bar" id="translateBar">
+  <span>🌐 This page is in English.</span>
+  <div class="translate-bar-actions">
+
+    <!-- Option B: Direct Google Translate Link -->
+    <a class="translate-link-btn" id="translateLinkBtn" href="#" target="_blank" rel="noopener">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.87 15.07l-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
+      </svg>
+      Seite übersetzen
+    </a>
+
+  </div>
+  <button class="translate-close" onclick="document.getElementById('translateBar').style.display='none'" title="Schließen">✕</button>
+</div>
 
 <!--Blau Header-->
 <div class="top-bar">
@@ -2748,6 +2822,15 @@ function copyInstallCmds() {
 
   var btnLinux = document.getElementById('btn-linux');
   if (btnLinux) btnLinux.addEventListener('click', loadDeb);
+})();
+
+// ── GOOGLE TRANSLATE LINK ──
+(function() {
+  var btn = document.getElementById('translateLinkBtn');
+  if (btn) {
+    var url = 'https://translate.google.com/translate?sl=en&tl=de&u=' + encodeURIComponent(window.location.href);
+    btn.href = url;
+  }
 })();
 
 // ── DARK / LIGHT MODE TOGGLE ──
