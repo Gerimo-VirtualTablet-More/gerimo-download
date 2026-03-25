@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Gerimo</title>
+    <link rel="icon" type="image/png" href="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCACAAIADASIAAhEBAxEB/8QAHQABAAIDAQEBAQAAAAAAAAAAAAUHAwYIAgQBCf/EADYQAAEDAgMGBAUDAwUAAAAAAAEAAgMEBQYHERIhMUFhcQgTIlEUMlJigSNCkXLR4RVDU6HB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AOMkREBERAREQEREBfoBJ0A1JUla7LWVxDw3yoT/ALjxx7Dmtrtlpo6AAxs25ecj95/Hsg0aWnniaHSwSMB4FzSAsSsuVjJY3RytD2OGhad4K0K90JoK98O/yz6oz7tQfCiIgIiICIiAiIgIslPBNUSiKCN0jzyaFstqw0xukle7aP8AxtO78lBAW+31VdJs08RcObjuaO5W1WrD9LS6SVGlRKPcekdh/dS8UbIoxHGxrGDg1o0AXpAREQFFYmoPjbeXMbrNDq5vUcwpVEFZIpbE9B8HXl8bdIZvU3oeYUSgIiICIpW1WOsrtHkeTCf3uHHsOaCLa1znBrQSTwAHFT1qw3PNpJWkwx/QPmP9lsFstdHQN/Rj2pOcjt7v8L7kGCjpKeji8unibG3npxPc81nREBERAREQEREHxXqiFfQPg3bY9UZ9nLQHNc1xa4EOB0IPJWYtRxhQeTUitjb6JTo/o7/KCAREQS2FaWKquo81oc2NpfsnmeS3dV7aKx1DXx1A3tB0ePdp4qwI3tkjbIxwc1w1BHMIPSIiAiIgIiICIiAiIgLBX00dZSSU0nB4019jyKzographkp6h8Eo0ex2hCxrb79boKm9W3bJY2qnbBKQN+hIGvcAqHxnh644TxTcsOXaLy6231DoJRyOh3OHQjQjoUEQtswdX+ZC6hkd6o/VHrzbzH4WprNR1ElLVR1ER0cw6jr0QWOixUk8dVTR1ER1Y9uo6dFlQEREBERARF6jY+R7Y42ue9x0a1o1JPsBzQeUVhtycxszAtdi+to46Cio4vOMVQ7ZlewcTpy7HeVXUr2RMMkj2sYOLnHQBB6WGsqqeki8yolbG3lrxPYc14scV+xZeG2TBlnqbrWv4mNmrWD6iTuaOriAujspvC1b6SWK9ZlVovNducLdC8injPs9+4v7DRvdBUnh6wBdMy8xLdd5KKaHC9nqGz1FRI3Rsz2kOETTzcSBrpwGuvJWR488BQy0FBmLRRtbURyNobjoPnadfKeeoOrexb7LqS30dJb6KKioKWCkpYW7EUMMYYxg9g0bgqJ8ceIKG35QGxySMNZdKyIRR89mN2252nsNAPyEHCSIiDY8G1+xK6gkd6X+qPXkeY/K2pVpE90cjZGOLXNOoI5FWDaqxtdQx1DdNojR49nc0H1IiICIiDesrsrMU5gVAda6YQW8P2ZK2YegEcQ0cXHt/Kud7so8iYi12mKMXMbvjY5rnRO+53yxDoNXLn2DN7FWFsHS4RtuIJ6S3yyOkMFM1rZvV8wEgG01p5jVSeWeRuYGZJjuF1DsM4flO351Qw+dO33ZGdC7X6naDug+bNXOrF+YtzZa/MlqI3ybNLZ7a13kh3IEDfI7vr+FuOV3hjxFiKSG75lVslqotQ5lrpyPiHD2ed7Y/wDt3ZdF5W5VYLy4oxHh61t+NLdmW4VGj6mX39X7R9rdAt3JAGp3AIIbB2FMO4Ps7LThq0U1tpG8Wwt9Uh+p7jvcepJUvLJHFGZJXtYwDUknQKt82c6sGZeQPjr64Vdy2dY6GmIdKe/Jo6nRccZuZ8Y0x/JLS/EutNocSBR0ryC8fe/i7tuHRB01nF4lMKYQ8622Atvt2bq0thf+jE77n8PwNT2XGeY+OMQ4+xC+9Yhq/Om02Yo2jSOFn0tHLvxK1lEBERAU1hSv+Frvh5HaRTbt/J3I/wDihVlpIjPUxwiRkZe4NDnu0aCeGp5DqgshFEy3Cps1VJasR0VTQXCnOxIySMgnrp19+B4hffhukxLjW7Ns+CbJVXGpd88gZ6Ih9TifS0dXFAraymo4vMqZWsHIcz2Cl8vsCY9zPqvLwvbHUdrDtma51WrIW+/q5n7W6nsr9yl8LlntkkV5zEq23+5bnfBRuPwsZ9nHcZO25vQroukpqekpYqWkgip6eJobHFEwMYxo5ADcAgqLKDw94KwGYrjWRDEF9bo41lZGDHG73jjOoH9R1PZXFxKj79erVYbdLcLvX09FSxN2nyTPDWgdyuXc4fFXG3zrVl9TiV29puNQ30DqxnE9zoOhQdFY/wAfYWwPa3V+IrrBSsAOxGXavkPs1o3k9lyJnD4nsR4jM1twgx9ktx1aag6GokHTkz8anqFRWIr7eMRXOS53y41NfVyH1SzP2j2HIDoNyjUGSpnmqZ3z1E0k0sjtp8kji5zj7kneSsaIgIiICIiAiIg7e8KmJcO5nZfx4cxdarXdrzh5jYWmupmSvkpeEbwXAn0/IezfddAWi12y0Ugo7TbqO30w3+VSwNiZ/DQF/LnB2Jr3hHEFNfsPV8tDX059EjOBB4tcODmnmCuirT4wr7FbmxXPCVDU1bW6GaGpdG1x99kg6fyg7EqJoqeJ0s0jY2NGpc46AKgs4fE1hjC/nWzC4bfbo3VpdG79CI/c8cezde4XMma2d+N8wS+nrK3/AE62O3fBUji1rh97uLu3DoqxQbXmHmFizHlxNXiO6y1DQ7WOnadmGL+lnD8nU9VqiIgIiICIiAiIg//Z">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -378,7 +379,7 @@ nav {
   display: block;
   position: relative;
   min-width: 6ch;
-  /* min-height set by JS after measuring all spans */
+  min-height: 1.15em; /* fallback height until JS measures spans */
 }
 
 .hero-headline .word-rotate span {
@@ -1146,7 +1147,7 @@ html.light .ki-divider     { background: #333; }
 html.light .ki-trash-svg path { fill: white; }
 html.light .ki-icon-svg path, html.light .ki-icon-svg circle:first-child { fill: white; }
 
-/* Tasten-Modal – default = light mode */
+/* Key Modal – default = light mode */
 #tasten-modal                    { background: #f0f0f0; color: #1a1a1a; }
 #tasten-modal .tm-title          { color: #1a1a1a; }
 #tasten-modal .tm-label          { color: #1a1a1a; }
@@ -1156,7 +1157,7 @@ html.light .ki-icon-svg path, html.light .ki-icon-svg circle:first-child { fill:
 #tasten-modal .tm-dropdown .tm-arrow { color: #555; }
 #tasten-modal .tm-handle         { background: #ccc; }
 
-/* Tasten-Modal – dark mode (html.light = dark UI) */
+/* Key Modal – dark mode (html.light = dark UI) */
 html.light #tasten-modal                    { background: #1c1c1e; color: #ffffff; }
 html.light #tasten-modal .tm-title          { color: #ffffff; }
 html.light #tasten-modal .tm-label          { color: #aaa; }
@@ -1330,7 +1331,7 @@ html.light .kb-win-btn {
 
 <!--Blau Header-->
 <div class="top-bar">
-  <button class="theme-toggle" id="themeToggle" title="Dark/Light Mode umschalten">
+  <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
     <span class="icon-moon">🌙</span>
     <span class="icon-sun">☀️</span>
   </button>
@@ -1338,27 +1339,27 @@ html.light .kb-win-btn {
 <div class="cta-section">
   <h1 class="hero-headline">
     <span class="word-rotate">
-      <span>Dein Android als Grafiktablett.</span>
-      <span>Dein Android als PC-Controller.</span>
-      <span>Dein Android als KI-Shortcut-Panel.</span>
-      <span>Dein Android als Trackpad.</span>
-      <span>Für Künstler. Für Designer.</span>
-      <span>Für Studenten. Für Power-User.</span>
-      <span>Für jeden PC-Workflow.</span>
-      <span>Zeichne. Steuere. Verbinde.</span>
-      <span>Tippe. Navigiere. Automatisiere.</span>
-      <span>Extrem niedrige Latenz. Maximale Präzision.</span>
-      <span>WLAN, Bluetooth oder USB – du entscheidest.</span>
-      <span>Kompatibel mit allen PC-Apps.</span>
+      <span>Your Android as a graphics tablet.</span>
+      <span>Your Android as a PC controller.</span>
+      <span>Your Android as an AI shortcut panel.</span>
+      <span>Your Android as a trackpad.</span>
+      <span>For artists. For designers.</span>
+      <span>For students. For power users.</span>
+      <span>For every PC workflow.</span>
+      <span>Draw. Control. Connect.</span>
+      <span>Type. Navigate. Automate.</span>
+      <span>Ultra-low latency. Maximum precision.</span>
+      <span>Wi-Fi, Bluetooth or USB – your choice.</span>
+      <span>Compatible with all PC apps.</span>
     </span>
   </h1>
-  <p class="hero-sub">Mach dein Android zum professionellen, individuell anpassbaren PC-Controller.</p>
+  <p class="hero-sub">Turn your Android into a professional, fully customizable PC controller.</p>
 
 </div>
 
 <div class="tab-nav-wrapper">
   <div class="tab-nav">
-    <a href="javascript:void(0)" class="tab-btn active" data-tab="schnell" onclick="fcGoTo(0)">Funktionen</a>
+    <a href="javascript:void(0)" class="tab-btn active" data-tab="schnell" onclick="fcGoTo(0)">Features</a>
     <a href="#linux" class="tab-btn tab-btn-download" data-tab="download">Download</a>
   </div>
 </div>
@@ -1370,14 +1371,14 @@ html.light .kb-win-btn {
 
 <div class="features-carousel" id="features-carousel">
 
-  <!-- Slide 0: Stifteingabe -->
+  <!-- Slide 0: Pen Input -->
   <div class="fc-slide active" id="fc-0">
     <div class="feature-section">
       <div>
-        <span class="feature-label">Stifteingabe</span>
-        <h2 class="feature-title">Professionelles Zeichnen.</h2>
-        <p class="feature-desc">Gerimo überträgt jeden Stiftstrich, Mausklick und Tastendruck mit extrem niedriger Latenz und hoher Präzision als echte PC-Eingabe an deinen Computer – perfekt für Photoshop, Clip Studio Paint und mehr.</p>
-      <p class="feature-desc" style="margin-bottom:0">Verwandle dein Android-Gerät in ein professionelles Grafiktablett für Zeichen- und Notiz-Apps auf dem PC.</p>
+        <span class="feature-label">Pen Input</span>
+        <h2 class="feature-title">Professional drawing.</h2>
+        <p class="feature-desc">Gerimo transmits every pen stroke, mouse click and keystroke with ultra-low latency and high precision as real PC input to your computer – perfect for Photoshop, Clip Studio Paint and more.</p>
+      <p class="feature-desc" style="margin-bottom:0">Turn your Android device into a professional graphics tablet for drawing and note-taking apps on your PC.</p>
       </div>
       <div class="feat-gallery">
         <div class="gallery-display" id="gallery-pen" style="display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
@@ -1390,66 +1391,66 @@ html.light .kb-win-btn {
     </div>
   </div>
 
-  <!-- Slide 1: KI-Shortcuts -->
+  <!-- Slide 1: AI Shortcuts -->
   <div class="fc-slide" id="fc-1">
     <div class="feature-section reverse">
       <div>
-        <span class="feature-label">KI-Shortcuts</span>
-        <h2 class="feature-title">Makros erstellen. In Sekunden. Mit KI.</h2>
-        <p class="feature-desc">Beschreibe einfach, was du automatisieren willst – Gerimos KI-Assistent erstellt den Shortcut oder das Makro für dich. Kein Scripting nötig.</p>
-        <p class="feature-desc" style="margin-bottom:0;">Starte Shortcuts per App, Widget auf dem Homescreen oder über physische Tasten deines Geräts.</p>
+        <span class="feature-label">AI Shortcuts</span>
+        <h2 class="feature-title">Create macros. In seconds. With AI.</h2>
+        <p class="feature-desc">Simply describe what you want to automate – Gerimo's AI assistant creates the shortcut or macro for you. No scripting needed.</p>
+        <p class="feature-desc" style="margin-bottom:0;">Launch shortcuts via app, home screen widget or the physical buttons on your device.</p>
       </div>
       <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:center;">
 
       <div style="position:relative;width:220px;align-self:center;">
 
       <div id="ki-card-main" class="ki-card" style="width:220px;border-radius:14px;padding:12px 12px 32px;box-shadow:0 12px 40px rgba(0,0,0,0.25);font-family:'Google Sans',sans-serif;transition:opacity 0.35s;">
-            <div class="ki-title" style="font-size:11px;font-weight:700;text-align:center;margin-bottom:10px;">Tastenkombinationen</div>
+            <div class="ki-title" style="font-size:11px;font-weight:700;text-align:center;margin-bottom:10px;">Keyboard Shortcuts</div>
 
-            <!-- HINZUFÜGEN button -->
-            <div id="ki-add-btn" class="ki-addbtn" style="border-width:1px;border-style:solid;border-radius:6px;padding:6px;text-align:center;font-size:9px;font-weight:700;letter-spacing:0.05em;margin-bottom:10px;transition:background 0.15s,color 0.15s;">HINZUFÜGEN</div>
+            <!-- ADD button -->
+            <div id="ki-add-btn" class="ki-addbtn" style="border-width:1px;border-style:solid;border-radius:6px;padding:6px;text-align:center;font-size:9px;font-weight:700;letter-spacing:0.05em;margin-bottom:10px;transition:background 0.15s,color 0.15s;">ADD</div>
 
             <!-- Dynamic entries container -->
             <div id="ki-entries"></div>
 
       </div>
 
-      <!-- Tasten konfigurieren Modal – absolute, same position as ki-card -->
+      <!-- Configure Keys Modal – absolute, same position as ki-card -->
       <div id="tasten-modal" style="position:absolute;top:0;left:0;width:100%;border-radius:20px;padding:20px 16px 24px;box-shadow:0 12px 40px rgba(0,0,0,0.25);font-family:'Google Sans',sans-serif;
         opacity:0;transform:scale(0.88) translateY(12px);pointer-events:none;
         transition:opacity 0.35s cubic-bezier(.4,0,.2,1),transform 0.35s cubic-bezier(.4,0,.2,1);">
-        <div class="tm-title" style="font-size:14px;font-weight:700;margin-bottom:12px;">Tasten konfigurieren</div>
+        <div class="tm-title" style="font-size:14px;font-weight:700;margin-bottom:12px;">Configure keys</div>
         <div id="tasten-erkannt" style="font-size:12px;font-weight:700;color:#2e7d32;margin-bottom:16px;min-height:18px;"></div>
 
-        <!-- Kategorie -->
+        <!-- Category -->
         <div style="margin-bottom:10px;">
-          <div class="tm-label" style="font-size:9px;font-weight:700;margin-bottom:4px;letter-spacing:0.02em;">Kategorie</div>
+          <div class="tm-label" style="font-size:9px;font-weight:700;margin-bottom:4px;letter-spacing:0.02em;">Category</div>
           <div id="tasten-kat" class="tm-dropdown" style="border-width:2px;border-style:solid;border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;font-size:10px;transition:border-color 0.2s,box-shadow 0.2s;">
             <span id="tasten-kat-val">–</span>
             <span class="tm-arrow" style="font-size:8px;">▼</span>
           </div>
-          <div class="tm-tip" style="font-size:8px;margin-top:4px;line-height:1.4;font-style:italic;">Tipp: Die meisten Stifttasten nutzen diese. Sie funktionieren auf fast allen Geräten zuverlässig.</div>
+          <div class="tm-tip" style="font-size:8px;margin-top:4px;line-height:1.4;font-style:italic;">Tip: Most stylus buttons use this. They work reliably on almost all devices.</div>
         </div>
 
-        <!-- Gewählte Taste -->
+        <!-- Selected Key -->
         <div style="margin-bottom:10px;">
-          <div class="tm-label" style="font-size:9px;font-weight:700;margin-bottom:4px;letter-spacing:0.02em;">Gewählte Taste</div>
+          <div class="tm-label" style="font-size:9px;font-weight:700;margin-bottom:4px;letter-spacing:0.02em;">Selected Key</div>
           <div id="tasten-taste" class="tm-dropdown" style="border-width:2px;border-style:solid;border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;font-size:10px;transition:border-color 0.2s,box-shadow 0.2s;">
             <span id="tasten-taste-val">–</span>
             <span class="tm-arrow" style="font-size:8px;">▼</span>
           </div>
         </div>
 
-        <!-- Verhalten -->
+        <!-- Behavior -->
         <div style="margin-bottom:16px;">
-          <div class="tm-label" style="font-size:9px;font-weight:700;margin-bottom:4px;letter-spacing:0.02em;">Verhalten</div>
+          <div class="tm-label" style="font-size:9px;font-weight:700;margin-bottom:4px;letter-spacing:0.02em;">Behavior</div>
           <div id="tasten-verh" class="tm-dropdown" style="border-width:2px;border-style:solid;border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:center;font-size:10px;transition:border-color 0.2s,box-shadow 0.2s;">
             <span id="tasten-verh-val">–</span>
             <span class="tm-arrow" style="font-size:8px;">▼</span>
           </div>
         </div>
 
-        <div class="tm-hint" style="font-size:8px;text-align:center;font-style:italic;line-height:1.4;">Um Konflikte zu vermeiden, deaktivieren Sie vor der Verwendung die werkseitig voreingestellten Stifttasten.</div>
+        <div class="tm-hint" style="font-size:8px;text-align:center;font-style:italic;line-height:1.4;">To avoid conflicts, disable factory-preset stylus buttons before use.</div>
         <div class="tm-handle" style="width:36px;height:4px;border-radius:2px;margin:14px auto 0;"></div>
       </div>
 
@@ -1457,12 +1458,12 @@ html.light .kb-win-btn {
       <div id="ki-assistent-panel" style="position:absolute;top:0;left:0;width:100%;border-radius:14px;padding:16px 14px 18px;box-shadow:0 12px 40px rgba(0,0,0,0.25);font-family:'Google Sans',sans-serif;
         opacity:0;transform:scale(0.88) translateY(12px);pointer-events:none;
         transition:opacity 0.35s cubic-bezier(.4,0,.2,1),transform 0.35s cubic-bezier(.4,0,.2,1);">
-        <div class="ka-title" style="font-size:13px;font-weight:700;text-align:center;margin-bottom:14px;line-height:1.3;">KI zum Erstellen von Shortcuts verwenden</div>
+        <div class="ka-title" style="font-size:13px;font-weight:700;text-align:center;margin-bottom:14px;line-height:1.3;">Use AI to create shortcuts</div>
         <div class="ka-input-wrap" style="border-radius:8px;border-width:1px;border-style:solid;padding:10px 12px;margin-bottom:8px;">
           <span id="ka-input-text" class="ka-placeholder" style="font-size:11px;font-weight:500;"></span>
         </div>
-        <div class="ka-btn" style="border-radius:8px;padding:10px 12px;text-align:center;font-size:11px;font-weight:700;letter-spacing:0.05em;margin-bottom:12px;">KI-SUCHE</div>
-        <div class="ka-hint" style="font-size:8px;text-align:center;">KI kann Fehler machen. Bitte Ergebnisse überprüfen.</div>
+        <div class="ka-btn" style="border-radius:8px;padding:10px 12px;text-align:center;font-size:11px;font-weight:700;letter-spacing:0.05em;margin-bottom:12px;">AI SEARCH</div>
+        <div class="ka-hint" style="font-size:8px;text-align:center;">AI can make mistakes. Please verify results.</div>
       </div>
 
       </div><!-- end relative wrapper -->
@@ -1473,14 +1474,14 @@ html.light .kb-win-btn {
     </div>
   </div>
 
-  <!-- Slide 2: Verbindung -->
+  <!-- Slide 2: Connection -->
   <div class="fc-slide" id="fc-2">
     <div class="feature-section">
       <div>
-        <span class="feature-label">Verbindung</span>
-        <h2 class="feature-title">WLAN. Bluetooth. USB. Deine Wahl.</h2>
-        <p class="feature-desc">Gerimo verbindet sich über WLAN, Bluetooth und USB-Tethering – immer mit konstant niedriger Latenz für flüssige Eingabe in Echtzeit.</p>
-        <p class="feature-desc" style="margin-bottom:0;">Mehrere Monitore werden vollständig unterstützt, mit präziser Eingabezuordnung für jeden Display.</p>
+        <span class="feature-label">Connection</span>
+        <h2 class="feature-title">Wi-Fi. Bluetooth. USB. Your choice.</h2>
+        <p class="feature-desc">Gerimo connects via Wi-Fi, Bluetooth and USB tethering – always with consistently low latency for smooth real-time input.</p>
+        <p class="feature-desc" style="margin-bottom:0;">Multiple monitors are fully supported, with precise input mapping for each display.</p>
       </div>
       <div class="feat-gallery">
         <div class="gallery-display" style="display:flex;align-items:center;justify-content:center;">
@@ -1498,10 +1499,10 @@ html.light .kb-win-btn {
   <div class="fc-slide" id="fc-3">
     <div class="feature-section">
       <div>
-        <span class="feature-label">Gestensteuerung</span>
-        <h2 class="feature-title">Dein Touchscreen als Trackpad.</h2>
-        <p class="feature-desc">Navigiere deinen PC intuitiv mit Touch-Gesten. Nutze deinen Bildschirm als großes Trackpad mit Maussteuerung, Pinch-to-Zoom und klarem visuellem Feedback für jede Interaktion.</p>
-        <p class="feature-desc" style="margin-bottom:0">Perfekt für Remote-Desktop-Steuerung, Präsentationen und alltägliche PC-Navigation – direkt von deinem Android-Gerät.</p>
+        <span class="feature-label">Gesture Control</span>
+        <h2 class="feature-title">Your touchscreen as a trackpad.</h2>
+        <p class="feature-desc">Navigate your PC intuitively with touch gestures. Use your screen as a large trackpad with mouse control, pinch-to-zoom and clear visual feedback for every interaction.</p>
+        <p class="feature-desc" style="margin-bottom:0">Perfect for remote desktop control, presentations and everyday PC navigation – directly from your Android device.</p>
       </div>
       <div class="feat-gallery">
         <div class="gallery-display" style="display:flex;align-items:center;justify-content:center;min-height:220px;position:relative;overflow:hidden;">
@@ -1567,10 +1568,10 @@ html.light .kb-win-btn {
   <div class="fc-slide" id="fc-4">
     <div class="feature-section reverse">
       <div>
-        <span class="feature-label">Tastatur</span>
-        <h2 class="feature-title">Tippen auf dem PC. Von Android.</h2>
-        <p class="feature-desc">Tippe direkt auf deinem Android-Gerät – Gerimo sendet jeden Tastendruck in Echtzeit an deinen PC. Kompatibel mit allen Tastaturen wie Gboard, Samsung Keyboard und mehr.</p>
-        <p class="feature-desc" style="margin-bottom:0">Jede Sprache und jedes Zeichen wird unterstützt.</p>
+        <span class="feature-label">Keyboard</span>
+        <h2 class="feature-title">Type on your PC. From Android.</h2>
+        <p class="feature-desc">Type directly on your Android device – Gerimo sends every keystroke in real time to your PC. Compatible with all keyboards like Gboard, Samsung Keyboard and more.</p>
+        <p class="feature-desc" style="margin-bottom:0">Every language and character is supported.</p>
       </div>
       <div class="feat-gallery">
         <div class="gallery-display kb-slide-gallery" style="display:flex;align-items:center;justify-content:center;gap:20px;padding:16px;position:relative;overflow:hidden;">
@@ -1712,10 +1713,10 @@ html.light .kb-win-btn {
 <div class="linux-section" id="linux">
   <div class="linux-inner">
     <div>
-      <h2 class="feature-title">Gerimo für deinen Desktop.</h2>
-      <p class="feature-desc">Starte in wenigen Minuten.</p>
+      <h2 class="feature-title">Gerimo for your desktop.</h2>
+      <p class="feature-desc">Get started in minutes.</p>
 
-      <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:10px;">1. Client für Android</p>
+      <p style="font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:10px;">1. Client for Android</p>
       <a href="https://play.google.com/store/apps/details?id=com.antozstudios.gerimo&hl=en" class="btn-main" target="_blank" rel="noopener" style="display:inline-flex;margin-bottom:20px;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M3.18 23.76c.31.17.67.18.99.03L16.79 12 3.17.21C2.85.06 2.49.07 2.18.24 1.84.44 1.64.82 1.64 1.24v21.52c0 .42.2.8.54.98z"/><path d="M20.1 10.23l-2.8-1.6L13.96 12l3.34 3.37 2.8-1.6c.8-.46.8-1.51 0-1.97v-.57z" opacity=".8"/><path d="M3.18 23.76L13.96 12 3.17.21c-.02.01-.04.02-.06.03z" opacity=".4"/></svg>
         Google Play
@@ -1757,12 +1758,12 @@ html.light .kb-win-btn {
             <span style="background:#00a4ef;"></span>
             <span style="background:#ffb900;"></span>
           </span>
-          Im Microsoft Store herunterladen
+          Download from Microsoft Store
         </a>
       </div>
     </div>
 
-    <!-- Rechte Spalte: Linux-Inhalt -->
+    <!-- Right column: Linux content -->
     <div class="os-right-col">
       <div id="os-linux-right" style="display:none;">
         <div class="distro-list">
@@ -1776,13 +1777,13 @@ html.light .kb-win-btn {
 
         <!-- .deb Buttons -->
         <div id="deb-download-wrap" style="margin-top:18px;display:flex;flex-direction:column;gap:10px;">
-          <span id="deb-loading" style="font-size:0.85rem;opacity:0.6;">Lade neueste Version…</span>
+          <span id="deb-loading" style="font-size:0.85rem;opacity:0.6;">Loading latest version…</span>
         </div>
 
-        <!-- Trenner -->
+        <!-- Divider -->
         <div id="side-linux-or" style="display:none;align-items:center;gap:12px;margin:20px 0;">
           <div style="flex:1;height:1px;background:var(--border-color);"></div>
-          <span style="font-size:0.78rem;font-weight:700;opacity:0.4;text-transform:uppercase;letter-spacing:0.1em;">oder</span>
+          <span style="font-size:0.78rem;font-weight:700;opacity:0.4;text-transform:uppercase;letter-spacing:0.1em;">or</span>
           <div style="flex:1;height:1px;background:var(--border-color);"></div>
         </div>
 
@@ -1794,9 +1795,9 @@ html.light .kb-win-btn {
               <span class="tbar-dot" style="background:#febc2e;"></span>
               <span class="tbar-dot" style="background:#28c840;"></span>
               <span class="terminal-title">bash</span>
-              <button id="copy-btn" onclick="copyInstallCmds()" title="Kopieren" style="margin-left:auto;background:rgba(255,255,255,0.08);border:none;border-radius:6px;padding:4px 10px;cursor:pointer;color:#aaa;font-size:0.72rem;display:flex;align-items:center;gap:5px;transition:background 0.2s;">
+              <button id="copy-btn" onclick="copyInstallCmds()" title="Copy" style="margin-left:auto;background:rgba(255,255,255,0.08);border:none;border-radius:6px;padding:4px 10px;cursor:pointer;color:#aaa;font-size:0.72rem;display:flex;align-items:center;gap:5px;transition:background 0.2s;">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"/></svg>
-                <span id="copy-label">Kopieren</span>
+                <span id="copy-label">Copy</span>
               </button>
             </div>
             <div class="terminal-body">
@@ -1819,8 +1820,8 @@ html.light .kb-win-btn {
 <footer>
   <div>© 2025 AntozStudios</div>
   <div class="footer-links">
-    <a href="https://gerimo-virtualtablet-more.github.io/gerimo-privacy-policy/">Datenschutz</a>
-    <a href="https://discord.gg/VAd5Xdnecn" target="_blank" rel="noopener">Kontakt</a>
+    <a href="https://gerimo-virtualtablet-more.github.io/gerimo-privacy-policy/">Privacy Policy</a>
+    <a href="https://discord.gg/VAd5Xdnecn" target="_blank" rel="noopener">Contact</a>
     <a href="https://play.google.com/store/apps/details?id=com.antozstudios.gerimo&utm_source=info">Google Play</a>
   </div>
 </footer>
@@ -1913,7 +1914,7 @@ html.light .kb-win-btn {
           label.textContent = name;
           entriesEl.appendChild(label);
 
-          // ── Step A: tap HINZUFÜGEN → label appears
+          // ── Step A: tap ADD → label appears
           moveFinger(addBtn, function() {
             addBtn.style.background = '#e0e0e0';
             addBtn.style.color = '#444';
@@ -1978,7 +1979,7 @@ html.light .kb-win-btn {
           });
         }
 
-        // Shortcut-Eintrag sofort einfügen (nach KI-Suche – keine manuelle Auswahl)
+        // Add shortcut entry immediately (after AI search – no manual selection)
         function addEntryInstant(name, mod, key, afterDivider, done) {
           if (afterDivider) {
             var div = document.createElement('div');
@@ -2068,13 +2069,13 @@ html.light .kb-win-btn {
           resetModal();
           showModal(function() {
             setTimeout(function() {
-              erkannt.textContent = 'Erkannt: VOLUME DOWN ✓';
+              erkannt.textContent = 'Detected: VOLUME DOWN ✓';
               setTimeout(function() {
-                flashBox(katBox, 'Gängige Tasten', katVal, function() {
+                flashBox(katBox, 'Common Keys', katVal, function() {
                   setTimeout(function() {
                     flashBox(tasteBox, 'VOLUME DOWN', tasteVal, function() {
                       setTimeout(function() {
-                        flashBox(verhBox, 'Klicken', verhVal, function() {
+                        flashBox(verhBox, 'Click', verhVal, function() {
                           setTimeout(function() {
                             if (recDot) recDot.setAttribute('fill', '#34a853');
                             setTimeout(function() {
@@ -2094,7 +2095,7 @@ html.light .kb-win-btn {
         // ── KI-Assistent Panel ──
         var kaPanel   = document.getElementById('ki-assistent-panel');
         var kaText    = document.getElementById('ka-input-text');
-        var kaFullText = 'Screenshot erstellen und speichern';
+        var kaFullText = 'Create and save screenshot';
 
         function typeText(el, text, cb) {
           el.textContent = '';
@@ -2136,7 +2137,7 @@ html.light .kb-win-btn {
             setTimeout(function() {
               addEntryInstant('Close', 'Alt', 'F4', true, function() {
 
-                // 2. Tasten konfigurieren für zweiten Shortcut
+                // 2. Configure keys for second shortcut
                 setTimeout(function() {
                   var dots = entriesEl.querySelectorAll('.ki-rec-dot');
                   var dot = dots[1] || dots[0];
@@ -2147,19 +2148,19 @@ html.light .kb-win-btn {
                       showKaPanel(function() {
                         typeText(kaText, kaFullText, function() {
 
-                          // KI-SUCHE aufleuchten
+                          // AI SEARCH aufleuchten
                           var kaBtn = kaPanel.querySelector('.ka-btn');
                           if (kaBtn) {
                             kaBtn.style.opacity = '0.5';
                             setTimeout(function() { kaBtn.style.opacity = '1'; }, 200);
                           }
 
-                          // 4. KI schließt sich → neue Shortcuts zur bestehenden Liste hinzufügen
+                          // 4. AI closes → add new shortcuts to existing list
                           setTimeout(function() {
                             hideKaPanel(function() {
                               addEntryInstant('Screenshot', 'Win', 'PrtSc', true, function() {
                                 setTimeout(function() {
-                                  addEntryInstant('Speichern', 'Ctrl', 'S', true, function() {
+                                  addEntryInstant('Save', 'Ctrl', 'S', true, function() {
                                     // 5. Loop
                                     setTimeout(runAnim, 1500);
                                   });
@@ -2670,7 +2671,7 @@ window.addEventListener('scroll', () => {
     const el = document.getElementById(id);
     if (el) {
       const rect = el.getBoundingClientRect();
-      const offset = 150; // ggf. anpassen
+      const offset = 150; // adjust as needed
       if (rect.top <= offset && rect.bottom > offset) {
         cur = id;
       }
@@ -2690,11 +2691,11 @@ function copyInstallCmds() {
   navigator.clipboard.writeText(cmds).then(function() {
     var label = document.getElementById('copy-label');
     var btn = document.getElementById('copy-btn');
-    label.textContent = 'Kopiert!';
+    label.textContent = 'Copied!';
     btn.style.background = 'rgba(52,168,83,0.25)';
     btn.style.color = '#34a853';
     setTimeout(function() {
-      label.textContent = 'Kopieren';
+      label.textContent = 'Copy';
       btn.style.background = '';
       btn.style.color = '';
     }, 2000);
@@ -2713,12 +2714,12 @@ function copyInstallCmds() {
       .then(function(r) { return r.json(); })
       .then(function(files) {
         if (!Array.isArray(files)) {
-          document.getElementById('deb-loading').textContent = 'Kein .deb gefunden.';
+          document.getElementById('deb-loading').textContent = 'No .deb found.';
           return;
         }
         var debs = files.filter(function(f) { return f.name.endsWith('.deb'); });
         if (!debs.length) {
-          document.getElementById('deb-loading').textContent = 'Kein .deb gefunden.';
+          document.getElementById('deb-loading').textContent = 'No .deb found.';
           return;
         }
         debs.sort(function(a, b) { return a.name.localeCompare(b.name); });
@@ -2733,14 +2734,14 @@ function copyInstallCmds() {
           a.style.display = 'inline-flex';
           a.style.width = '100%';
           a.style.boxSizing = 'border-box';
-          a.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px;vertical-align:middle;flex-shrink:0;"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-7 2h14v2H5v-2z"/></svg>' + deb.name + ' herunterladen';
+          a.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px;vertical-align:middle;flex-shrink:0;"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-7 2h14v2H5v-2z"/></svg>' + deb.name + ' download';
           wrap.appendChild(a);
         });
         document.getElementById('side-linux-or').style.display = 'flex';
         document.getElementById('side-linux').style.display = '';
       })
       .catch(function() {
-        document.getElementById('deb-loading').textContent = 'Fehler beim Laden.';
+        document.getElementById('deb-loading').textContent = 'Error loading.';
       });
   }
 
