@@ -1802,7 +1802,7 @@ html.light .kb-win-btn {
               </button>
             </div>
             <div class="terminal-body">
-              <div><span class="t-prompt">user@linux:~$&nbsp;</span><span class="t-cmd">curl -fsSL https://gerimo.info/docs/KEY.gpg | sudo gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/gerimo.gpg > /dev/null && echo "deb https://gerimo.info/docs/ ./" | sudo tee /etc/apt/sources.list.d/gerimo.list && sudo apt update && sudo apt install gerimo</span></div>
+              <div><span class="t-prompt">user@linux:~$&nbsp;</span><span class="t-cmd">curl -fsSL https://gerimo.info/docs/KEY.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/gerimo.gpg > /dev/null && echo "deb [signed-by=/etc/apt/trusted.gpg.d/gerimo.gpg] https://gerimo.info/docs/ ./" | sudo tee /etc/apt/sources.list.d/gerimo.list && sudo apt update && sudo apt install gerimo</span></div>
               <div><span class="t-cursor"></span></div>
             </div>
           </div>
@@ -2688,7 +2688,7 @@ window.addEventListener('scroll', () => {
 
 // ── LINUX COPY COMMANDS ──
 function copyInstallCmds() {
-  var cmds = 'curl -fsSL https://gerimo.info/docs/KEY.gpg | sudo gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/gerimo.gpg > /dev/null && echo "deb https://gerimo.info/docs/ ./" | sudo tee /etc/apt/sources.list.d/gerimo.list && sudo apt update && sudo apt install gerimo';
+  var cmds = 'curl -fsSL https://gerimo.info/docs/KEY.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/gerimo.gpg > /dev/null && echo "deb [signed-by=/etc/apt/trusted.gpg.d/gerimo.gpg] https://gerimo.info/docs/ ./" | sudo tee /etc/apt/sources.list.d/gerimo.list && sudo apt update && sudo apt install gerimo';
   navigator.clipboard.writeText(cmds).then(function() {
     var label = document.getElementById('copy-label');
     var btn = document.getElementById('copy-btn');
