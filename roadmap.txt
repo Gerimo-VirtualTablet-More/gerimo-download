@@ -1,0 +1,4 @@
+Fundament:[Kernprodukt,Nutzerkonten,Onboarding];done
+Wachstum:[KI-Features,Mobile App];pending
+Skalierung:[Enterprise,API v2];planned
+Zukunft;planned

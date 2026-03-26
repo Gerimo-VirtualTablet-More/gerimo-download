@@ -974,6 +974,103 @@ html.light .distro-tooltip {
 }
 .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.2); }
 
+/* ── ROADMAP SECTION ── */
+.roadmap-section {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+.roadmap-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+.roadmap-section .roadmap-sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 48px;
+}
+.roadmap-upload-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.roadmap-upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.roadmap-upload-btn:hover { background: var(--bg-pill); }
+.roadmap-upload-btn svg { flex-shrink: 0; }
+.roadmap-filename { font-size: 0.8rem; color: var(--text-secondary); }
+.roadmap-list { display: flex; flex-direction: column; }
+.roadmap-item {
+  display: flex;
+  gap: 20px;
+  position: relative;
+}
+.roadmap-item:not(:last-child) .roadmap-line {
+  position: absolute;
+  left: 18px;
+  top: 38px;
+  bottom: -1px;
+  width: 2px;
+  background: var(--border-color);
+}
+.roadmap-item.status-done:not(:last-child) .roadmap-line { background: #1D9E75; }
+.roadmap-item.status-pending:not(:last-child) .roadmap-line { background: #EF9F27; }
+.roadmap-dot-wrap { flex-shrink: 0; width: 38px; height: 38px; position: relative; z-index: 1; }
+.roadmap-dot {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.roadmap-item.status-done .roadmap-dot { background: #1D9E75; }
+.roadmap-item.status-pending .roadmap-dot { background: #EF9F27; }
+.roadmap-item.status-planned .roadmap-dot { background: transparent; border: 2px solid var(--border-color); }
+.roadmap-card {
+  flex: 1; border-radius: 12px; padding: 14px 18px; margin-bottom: 20px;
+  border: 0.5px solid transparent;
+  transition: background 0.25s, border-color 0.25s;
+}
+.roadmap-item.status-done .roadmap-card { background: rgba(29,158,117,0.08); border-color: rgba(29,158,117,0.25); }
+.roadmap-item.status-pending .roadmap-card { background: rgba(239,159,39,0.08); border-color: rgba(239,159,39,0.25); }
+.roadmap-item.status-planned .roadmap-card { background: var(--bg-tertiary); border-color: var(--border-color); }
+.roadmap-card-top {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 10px; flex-wrap: wrap; gap: 6px;
+}
+.roadmap-title { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
+.roadmap-badge {
+  font-size: 0.7rem; font-weight: 600; padding: 3px 10px;
+  border-radius: 20px; letter-spacing: 0.03em;
+}
+.status-done .roadmap-badge { background: #1D9E75; color: #fff; }
+.status-pending .roadmap-badge { background: #EF9F27; color: #fff; }
+.status-planned .roadmap-badge { background: var(--bg-pill); color: var(--text-secondary); }
+.roadmap-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.roadmap-tag { font-size: 0.75rem; padding: 3px 10px; border-radius: 20px; }
+.status-done .roadmap-tag { background: rgba(29,158,117,0.15); color: #0F6E56; }
+.status-pending .roadmap-tag { background: rgba(239,159,39,0.15); color: #854F0B; }
+.status-planned .roadmap-tag { background: var(--bg-pill); color: var(--text-secondary); }
+html.light .status-done .roadmap-tag { color: #0F6E56; }
+html.light .status-pending .roadmap-tag { color: #854F0B; }
+.roadmap-empty { font-size: 0.9rem; color: var(--text-secondary); text-align: center; padding: 40px 0; display: none; }
+.roadmap-empty.visible { display: block; }
+.roadmap-parse-hint { font-size: 0.78rem; color: var(--text-secondary); margin-top: 6px; font-family: 'SF Mono','Fira Code',monospace; opacity: 0.7; }
+
 /* Footer */
 footer {
   background: var(--bg-secondary);
@@ -1883,6 +1980,16 @@ html.light .kb-win-btn {
 
 
 
+
+<div id="roadmap-section">
+  <div class="section-divider"></div>
+  <div class="roadmap-section">
+    <h2>Roadmap</h2>
+    <p class="roadmap-sub">Was kommt als nächstes — und was schon fertig ist.</p>
+    <div class="roadmap-list" id="roadmap-list"></div>
+  </div>
+  <div class="section-divider"></div>
+</div>
 
 <footer>
   <div>© 2025 AntozStudios</div>
@@ -2853,5 +2960,89 @@ function copyInstallCmds() {
   }
 })();
     </script>
+<script>
+// ── ROADMAP AUTO-LOADER ──
+(function() {
+  const STATUS_MAP = {
+    done:    { label: 'Fertig',    cls: 'status-done' },
+    pending: { label: 'In Arbeit', cls: 'status-pending' },
+    planned: { label: 'Geplant',   cls: 'status-planned' },
+  };
+
+  function parseRoadmap(text) {
+    const items = [];
+    for (let raw of text.split('\n')) {
+      const line = raw.trim();
+      if (!line || line.startsWith('#')) continue;
+      const semicolonIdx = line.lastIndexOf(';');
+      if (semicolonIdx === -1) continue;
+      const left   = line.slice(0, semicolonIdx).trim();
+      const status = line.slice(semicolonIdx + 1).trim().toLowerCase();
+      let title = left, tags = [];
+      const bracketMatch = left.match(/^(.+?)\s*:\s*\[([^\]]*)\]$/);
+      if (bracketMatch) {
+        title = bracketMatch[1].trim();
+        tags  = bracketMatch[2].split(',').map(t => t.trim()).filter(Boolean);
+      } else {
+        const ci = left.indexOf(':');
+        if (ci !== -1) {
+          title = left.slice(0, ci).trim();
+          const rest = left.slice(ci + 1).trim();
+          if (rest) tags = rest.split(',').map(t => t.trim()).filter(Boolean);
+        }
+      }
+      const statusKey = STATUS_MAP[status] ? status : 'planned';
+      items.push({ title, tags, status: statusKey });
+    }
+    return items;
+  }
+
+  function checkIcon() {
+    return `<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5l3 3.5 6-7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  }
+  function dotIcon(status) {
+    if (status === 'done')    return checkIcon();
+    if (status === 'pending') return `<div style="width:10px;height:10px;border-radius:50%;background:white;"></div>`;
+    return '';
+  }
+
+  function renderRoadmap(items) {
+    const section = document.getElementById('roadmap-section');
+    if (!items.length) { section.style.display = 'none'; return; }
+    section.style.display = '';
+    const list = document.getElementById('roadmap-list');
+    list.innerHTML = '';
+    items.forEach(item => {
+      const info = STATUS_MAP[item.status];
+      const tagsHTML = item.tags.length
+        ? `<div class="roadmap-tags">${item.tags.map(t => `<span class="roadmap-tag">${t}</span>`).join('')}</div>`
+        : '';
+      const el = document.createElement('div');
+      el.className = `roadmap-item ${info.cls}`;
+      el.innerHTML = `
+        <div class="roadmap-dot-wrap">
+          <div class="roadmap-dot">${dotIcon(item.status)}</div>
+          <div class="roadmap-line"></div>
+        </div>
+        <div class="roadmap-card">
+          <div class="roadmap-card-top">
+            <span class="roadmap-title">${item.title}</span>
+            <span class="roadmap-badge">${info.label}</span>
+          </div>
+          ${tagsHTML}
+        </div>`;
+      list.appendChild(el);
+    });
+  }
+
+  const section = document.getElementById('roadmap-section');
+  section.style.display = 'none'; // hidden until file confirmed
+
+  fetch('/roadmap.txt')
+    .then(r => { if (!r.ok) throw new Error('not found'); return r.text(); })
+    .then(text => renderRoadmap(parseRoadmap(text)))
+    .catch(() => { section.style.display = 'none'; });
+})();
+</script>
 </body>
 </html>
