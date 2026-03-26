@@ -979,17 +979,24 @@ html.light .distro-tooltip {
   max-width: 720px;
   margin: 0 auto;
   padding: 80px 24px;
+  text-align: center;
 }
 .roadmap-section h2 {
-  font-size: 2rem;
+  font-family: 'Google Sans Display', 'Google Sans', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
+  letter-spacing: -1px;
   margin-bottom: 8px;
   color: var(--text-primary);
 }
 .roadmap-section .roadmap-sub {
-  font-size: 1rem;
+  font-size: 1.1rem;
+  opacity: 0.85;
   color: var(--text-secondary);
   margin-bottom: 48px;
+}
+.roadmap-list {
+  text-align: left;
 }
 .roadmap-upload-area {
   display: flex;
