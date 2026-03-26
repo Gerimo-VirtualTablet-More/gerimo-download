@@ -2000,9 +2000,106 @@ html.light .kb-win-btn {
   </div>
 </footer>
 
+<script>
+(function() {
+  var STATUS_MAP = {
+    done:    { label: 'Fertig',    cls: 'status-done' },
+    pending: { label: 'In Arbeit', cls: 'status-pending' },
+    planned: { label: 'Geplant',   cls: 'status-planned' },
+  };
 
+  function parseRoadmap(text) {
+    var items = [];
+    var lines = text.split('\n');
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i].trim();
+      if (!line || line.charAt(0) === '#') continue;
+      var si = line.lastIndexOf(';');
+      if (si === -1) continue;
+      var left = line.slice(0, si).trim();
+      var status = line.slice(si + 1).trim().toLowerCase();
+      var title = left, tags = [];
+      var bm = left.match(/^(.+?)\s*:\s*\[([^\]]*)\]$/);
+      if (bm) {
+        title = bm[1].trim();
+        tags  = bm[2].split(',').map(function(t){ return t.trim(); }).filter(Boolean);
+      } else {
+        var ci = left.indexOf(':');
+        if (ci !== -1) {
+          title = left.slice(0, ci).trim();
+          var rest = left.slice(ci + 1).trim();
+          if (rest) tags = rest.split(',').map(function(t){ return t.trim(); }).filter(Boolean);
+        }
+      }
+      var sk = STATUS_MAP[status] ? status : 'planned';
+      items.push({ title: title, tags: tags, status: sk });
+    }
+    return items;
+  }
 
+  function renderRoadmap(items) {
+    var section = document.getElementById('roadmap-section');
+    if (!section) return;
+    if (!items.length) { section.style.display = 'none'; return; }
+    section.style.display = '';
+    var list = document.getElementById('roadmap-list');
+    list.innerHTML = '';
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i];
+      var info = STATUS_MAP[item.status];
+      var dotInner = item.status === 'done'
+        ? '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5l3 3.5 6-7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+        : item.status === 'pending'
+          ? '<div style="width:10px;height:10px;border-radius:50%;background:white;"></div>'
+          : '';
+      var tagsHTML = '';
+      if (item.tags.length) {
+        tagsHTML = '<div class="roadmap-tags">';
+        for (var j = 0; j < item.tags.length; j++) {
+          tagsHTML += '<span class="roadmap-tag">' + item.tags[j] + '</span>';
+        }
+        tagsHTML += '</div>';
+      }
+      var el = document.createElement('div');
+      el.className = 'roadmap-item ' + info.cls;
+      el.innerHTML =
+        '<div class="roadmap-dot-wrap">' +
+          '<div class="roadmap-dot">' + dotInner + '</div>' +
+          '<div class="roadmap-line"></div>' +
+        '</div>' +
+        '<div class="roadmap-card">' +
+          '<div class="roadmap-card-top">' +
+            '<span class="roadmap-title">' + item.title + '</span>' +
+            '<span class="roadmap-badge">' + info.label + '</span>' +
+          '</div>' +
+          tagsHTML +
+        '</div>';
+      list.appendChild(el);
+    }
+  }
 
+  var section = document.getElementById('roadmap-section');
+  if (section) section.style.display = 'none';
+
+  fetch('/roadmap.txt')
+    .then(function(r) {
+      console.log('[Roadmap] fetch status:', r.status, r.url);
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.text();
+    })
+    .then(function(txt) {
+      console.log('[Roadmap] raw text:', JSON.stringify(txt.slice(0, 200)));
+      var items = parseRoadmap(txt);
+      console.log('[Roadmap] parsed items:', items.length, items);
+      renderRoadmap(items);
+    })
+    .catch(function(err) {
+      console.error('[Roadmap] error:', err);
+      var s = document.getElementById('roadmap-section');
+      if (s) s.style.display = 'none';
+    });
+})();
+</script>
 
             </div>
         </div>
@@ -2959,90 +3056,8 @@ function copyInstallCmds() {
     });
   }
 })();
-    </script>
-<script>
-// ── ROADMAP AUTO-LOADER ──
-(function() {
-  const STATUS_MAP = {
-    done:    { label: 'Fertig',    cls: 'status-done' },
-    pending: { label: 'In Arbeit', cls: 'status-pending' },
-    planned: { label: 'Geplant',   cls: 'status-planned' },
-  };
-
-  function parseRoadmap(text) {
-    const items = [];
-    for (let raw of text.split('\n')) {
-      const line = raw.trim();
-      if (!line || line.startsWith('#')) continue;
-      const semicolonIdx = line.lastIndexOf(';');
-      if (semicolonIdx === -1) continue;
-      const left   = line.slice(0, semicolonIdx).trim();
-      const status = line.slice(semicolonIdx + 1).trim().toLowerCase();
-      let title = left, tags = [];
-      const bracketMatch = left.match(/^(.+?)\s*:\s*\[([^\]]*)\]$/);
-      if (bracketMatch) {
-        title = bracketMatch[1].trim();
-        tags  = bracketMatch[2].split(',').map(t => t.trim()).filter(Boolean);
-      } else {
-        const ci = left.indexOf(':');
-        if (ci !== -1) {
-          title = left.slice(0, ci).trim();
-          const rest = left.slice(ci + 1).trim();
-          if (rest) tags = rest.split(',').map(t => t.trim()).filter(Boolean);
-        }
-      }
-      const statusKey = STATUS_MAP[status] ? status : 'planned';
-      items.push({ title, tags, status: statusKey });
-    }
-    return items;
-  }
-
-  function checkIcon() {
-    return `<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3.5 8.5l3 3.5 6-7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-  }
-  function dotIcon(status) {
-    if (status === 'done')    return checkIcon();
-    if (status === 'pending') return `<div style="width:10px;height:10px;border-radius:50%;background:white;"></div>`;
-    return '';
-  }
-
-  function renderRoadmap(items) {
-    const section = document.getElementById('roadmap-section');
-    if (!items.length) { section.style.display = 'none'; return; }
-    section.style.display = '';
-    const list = document.getElementById('roadmap-list');
-    list.innerHTML = '';
-    items.forEach(item => {
-      const info = STATUS_MAP[item.status];
-      const tagsHTML = item.tags.length
-        ? `<div class="roadmap-tags">${item.tags.map(t => `<span class="roadmap-tag">${t}</span>`).join('')}</div>`
-        : '';
-      const el = document.createElement('div');
-      el.className = `roadmap-item ${info.cls}`;
-      el.innerHTML = `
-        <div class="roadmap-dot-wrap">
-          <div class="roadmap-dot">${dotIcon(item.status)}</div>
-          <div class="roadmap-line"></div>
+    </script>            </div>
         </div>
-        <div class="roadmap-card">
-          <div class="roadmap-card-top">
-            <span class="roadmap-title">${item.title}</span>
-            <span class="roadmap-badge">${info.label}</span>
-          </div>
-          ${tagsHTML}
-        </div>`;
-      list.appendChild(el);
-    });
-  }
-
-  const section = document.getElementById('roadmap-section');
-  section.style.display = 'none'; // hidden until file confirmed
-
-  fetch('/roadmap.txt')
-    .then(r => { if (!r.ok) throw new Error('not found'); return r.text(); })
-    .then(text => renderRoadmap(parseRoadmap(text)))
-    .catch(() => { section.style.display = 'none'; });
-})();
-</script>
-</body>
+        <div class="tablet-bottom"></div>
+    </div>
 </html>
