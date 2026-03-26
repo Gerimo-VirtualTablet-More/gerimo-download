@@ -357,7 +357,7 @@ nav {
 
 /* ── HERO ── */
 .hero {
-  text-align: center;
+  text-align: left;
   padding: 100px 24px 60px;
   position: relative;
   overflow: hidden;
@@ -388,7 +388,7 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
-  text-align: center;
+  text-align: left;
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;
@@ -772,12 +772,12 @@ nav {
   background: var(--bg-secondary);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
-  padding: 96px 48px;
   transition: background 0.25s;
 }
 .linux-inner {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 96px 48px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
@@ -925,7 +925,7 @@ html.light .distro-tooltip {
 .stat-box {
   background: var(--bg-primary);
   padding: 48px 40px;
-  text-align: center;
+  text-align: left;
   transition: background 0.25s;
 }
 .stat-num {
@@ -945,9 +945,13 @@ html.light .distro-tooltip {
 .cta-section {
   background: var(--bg-primary);
   padding: 40px 48px;
-  text-align: center;
+  text-align: left;
   color: var(--text-primary);
   transition: background 0.25s;
+}
+.cta-inner {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .cta-section h2 {
   font-family: 'Google Sans Display', 'Google Sans', sans-serif;
@@ -976,9 +980,9 @@ html.light .distro-tooltip {
 
 /* ── ROADMAP SECTION ── */
 .roadmap-section {
-  max-width: 720px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 24px;
+  padding: 80px 48px;
 }
 .roadmap-section h2 {
   font-family: 'Google Sans Display', 'Google Sans', sans-serif;
@@ -1102,7 +1106,7 @@ footer a:hover { color: var(--text-primary); }
   .feature-section.reverse { direction: ltr; }
   .stats-section { grid-template-columns: 1fr; }
   .reviews-grid { grid-template-columns: 1fr; }
-  .linux-section { padding: 60px 24px; }
+  .linux-section { padding: 0; }
   .reviews-section { padding: 60px 24px; }
   footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
   .tab-nav { padding: 0 24px; }
@@ -1500,6 +1504,7 @@ html.light .kb-win-btn {
   </button>
 </div>
 <div class="cta-section">
+  <div class="cta-inner">
   <h1 class="hero-headline">
     <span class="word-rotate">
       <span>Your Android as a graphics tablet.</span>
@@ -1518,7 +1523,7 @@ html.light .kb-win-btn {
     </span>
   </h1>
   <p class="hero-sub">Turn your Android into a professional, fully customizable PC controller.</p>
-
+  </div>
 </div>
 
 <div class="tab-nav-wrapper">
