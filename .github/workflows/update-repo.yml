@@ -1,10 +1,5 @@
 name: Update APT Repo
-
-on:
-  push:
-    paths:
-      - 'docs/pool/**'  # Nur bei .deb-Änderungen
-  workflow_dispatch:  # Manuell triggerbar
+on: [push, workflow_dispatch]
 
 permissions:
   contents: write
@@ -13,41 +8,28 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0  # Für git-auto-commit
-
-    - name: Install Tools
-      run: sudo apt update && sudo apt install -y dpkg-dev gnupg
-
-    - name: Import GPG Key
+    - uses: actions/checkout@v4
+    - run: sudo apt install -y dpkg-dev gnupg
+    - name: Import GPG
       env:
         GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+      run: echo "$GPG_PRIVATE_KEY" | base64 --decode | gpg --batch --import
+    - name: Cleanup old repo files
+      working-directory: docs
+      run: rm -f Packages Packages.gz Release InRelease Release.gpg KEY.gpg
+    - name: Generate
+      working-directory: docs
+      env:
+        GPG_ID: "8023F2155B2F4FCDF88418C46FD6ABC81CAFAEAC"
         GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       run: |
-        echo "$GPG_PRIVATE_KEY" | base64 --decode | gpg --batch --yes --import
-        # Passphrase für Signing setzen (loopback mode)
-        echo "$GPG_PASSPHRASE" | gpg --batch --pinentry-mode loopback --change-passphrase
-
-    - name: Generate Repo Metadata
-      working-directory: ./docs
-      env:
-        GPG_ID: "Gerimo <antozstudios@proton.me>"
-      run: |
-        # Packages (rekursiv scannen)
-        dpkg-scanpackages . /dev/null > Packages
-        gzip -9 < Packages > Packages.gz
-        
-        # Release
+        ls -la pool/main/g/gerimo/
+        dpkg-scanpackages --multiversion pool/ > Packages
+        gzip -9c Packages > Packages.gz
         apt-ftparchive release . > Release
-        
-        # Signieren
-        gpg --yes --clearsign --local-user "$GPG_ID" -o InRelease Release
-        gpg --yes --detach-sign --local-user "$GPG_ID" -o Release.gpg Release
-
-    - name: Commit Changes
-      uses: stefanzweifel/git-auto-commit-action@v5
+        echo "$GPG_PASSPHRASE" | gpg --pinentry-mode loopback --passphrase-fd 0 --clearsign --local-user "$GPG_ID" -o InRelease Release
+        gpg --detach-sign --local-user "$GPG_ID" -o Release.gpg Release
+        gpg --armor --export "$GPG_ID" > KEY.gpg
+    - uses: stefanzweifel/git-auto-commit-action@v5
       with:
-        commit_message: "Auto-update APT repo metadata"
-        file_pattern: docs/{Packages,Release,InRelease,Release.gpg,*.gz}
+        commit_message: Update repo
