@@ -26,6 +26,7 @@ jobs:
         apt-ftparchive release . > Release
         echo "$GPG_PASSPHRASE" | gpg --pinentry-mode loopback --passphrase-fd 0 --clearsign --local-user "$GPG_ID" -o InRelease Release
         gpg --detach-sign --local-user "$GPG_ID" -o Release.gpg Release
+        gpg --armor --export "$GPG_ID" > KEY.gpg
     - uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: Update repo
