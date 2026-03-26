@@ -805,6 +805,9 @@ nav {
 }
 .distro-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
 .distro {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: var(--bg-tertiary);
   border: 1px solid var(--distro-border);
   border-radius: 8px;
@@ -812,6 +815,65 @@ nav {
   font-size: 0.82rem;
   font-weight: 500;
   color: var(--text-secondary);
+}
+.distro-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.distro-full .distro-dot    { background: #34a853; }
+.distro-partial .distro-dot { background: #fbbc04; }
+.distro-limited .distro-dot { background: #ea4335; }
+.distro-note {
+  font-size: 0.7rem;
+  font-weight: 700;
+  opacity: 0.55;
+  letter-spacing: 0.04em;
+}
+.distro-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  color: #e8e8e8;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 8px 12px;
+  border-radius: 8px;
+  white-space: normal;
+  width: 220px;
+  text-align: left;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s, transform 0.15s;
+  transform: translateX(-50%) translateY(4px);
+  z-index: 500;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+html.light .distro-tooltip {
+  background: #1a1a1a;
+  color: #e8e8e8;
+}
+.distro-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1a1a1a;
+}
+.distro[data-tip] {
+  position: relative;
+  cursor: default;
+}
+.distro[data-tip]:hover .distro-tooltip,
+.distro[data-tip].tip-active .distro-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* Terminal */
@@ -1746,7 +1808,7 @@ html.light .kb-win-btn {
           document.getElementById('os-windows').style.display='none';
           document.getElementById('os-linux-right').style.display='';
         ">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px;vertical-align:middle;"><path d="M12.5 2C9.5 2 7 4.4 7 7.5c0 1.7.7 3.2 1.9 4.3-.6 1-1 2.2-1 3.4 0 .8.2 1.6.5 2.3-.8.4-1.4 1.2-1.4 2.2 0 1.4 1.1 2.5 2.5 2.5.6 0 1.1-.2 1.5-.5.7.3 1.5.5 2.3.5 3.3 0 5.7-2.6 5.7-5.7 0-.5-.1-1-.2-1.5.8-.5 1.2-1.4 1.2-2.3 0-.9-.4-1.7-1-2.2.1-.4.1-.8.1-1.3C19 4.4 16.1 2 12.5 2z"/></svg>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Icons8_flat_linux.svg" width="18" height="18" style="margin-right:6px;vertical-align:middle;">
           Linux
         </button>
       </div>
@@ -1768,12 +1830,16 @@ html.light .kb-win-btn {
     <div class="os-right-col">
       <div id="os-linux-right" style="display:none;">
         <div class="distro-list">
-          <span class="distro">Ubuntu</span>
-          <span class="distro">Debian</span>
-          <span class="distro">Fedora</span>
-          <span class="distro">Arch Linux</span>
-          <span class="distro">Linux Mint</span>
-          <span class="distro">Pop!_OS</span>
+          <span class="distro distro-full" data-tip="All features supported."><span class="distro-dot"></span>Ubuntu 22.04 / 24.04</span>
+          <span class="distro distro-full" data-tip="All features supported."><span class="distro-dot"></span>Debian 12</span>
+          <span class="distro distro-full" data-tip="All features supported."><span class="distro-dot"></span>Fedora 38–40</span>
+          <span class="distro distro-full" data-tip="All features supported."><span class="distro-dot"></span>Linux Mint 21+</span>
+          <span class="distro distro-full" data-tip="All features supported."><span class="distro-dot"></span>Pop!_OS 22.04</span>
+          <span class="distro distro-full" data-tip="All features supported."><span class="distro-dot"></span>openSUSE Tumbleweed</span>
+          <span class="distro distro-full" data-tip="All features supported."><span class="distro-dot"></span>Arch / Manjaro</span>
+          <span class="distro distro-full" data-tip="All features supported."><span class="distro-dot"></span>Raspberry Pi OS</span>
+          <span class="distro distro-partial" data-tip="Mouse, keyboard, pen and touch work. Touchscreen monitor assignment requires GNOME."><span class="distro-dot"></span>KDE Plasma<span class="distro-note">partial</span></span>
+          <span class="distro distro-limited" data-tip="Mouse, keyboard, pen and touch work. Screen resolution detection requires GNOME — other setups may need manual configuration."><span class="distro-dot"></span>Pure Wayland (non-GNOME)<span class="distro-note">limited</span></span>
         </div>
 
         <!-- .deb Buttons -->
@@ -2735,7 +2801,7 @@ function copyInstallCmds() {
           a.style.display = 'inline-flex';
           a.style.width = '100%';
           a.style.boxSizing = 'border-box';
-          a.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px;vertical-align:middle;flex-shrink:0;"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-7 2h14v2H5v-2z"/></svg>' + deb.name + ' download';
+          a.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px;vertical-align:middle;flex-shrink:0;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zm-9 1H7v-2h4v2zm-3.5-4l-1.41-1.41L7.67 12l-1.59-1.59L7.5 9l3 3-3 3zm5.5 0v-2h4v2h-4z"/></svg>' + deb.name + ' download';
           wrap.appendChild(a);
         });
         document.getElementById('side-linux-or').style.display = 'flex';
@@ -2748,6 +2814,26 @@ function copyInstallCmds() {
 
   var btnLinux = document.getElementById('btn-linux');
   if (btnLinux) btnLinux.addEventListener('click', loadDeb);
+})();
+
+// ── DISTRO TOOLTIPS ──
+(function() {
+  document.querySelectorAll('.distro[data-tip]').forEach(function(el) {
+    var tip = document.createElement('span');
+    tip.className = 'distro-tooltip';
+    tip.textContent = el.getAttribute('data-tip');
+    el.appendChild(tip);
+
+    // Touch support
+    el.addEventListener('touchstart', function(e) {
+      document.querySelectorAll('.distro.tip-active').forEach(function(o) { if(o!==el) o.classList.remove('tip-active'); });
+      el.classList.toggle('tip-active');
+      e.stopPropagation();
+    }, { passive: true });
+  });
+  document.addEventListener('touchstart', function() {
+    document.querySelectorAll('.distro.tip-active').forEach(function(el) { el.classList.remove('tip-active'); });
+  }, { passive: true });
 })();
 
 // ── DARK / LIGHT MODE TOGGLE ──
