@@ -1,4 +1,5 @@
-Fundament:[Kernprodukt,Nutzerkonten,Onboarding];done
-Wachstum:[KI-Features,Mobile App];pending
-Skalierung:[Enterprise,API v2];planned
-Zukunft;planned
+# RoadmapName:[Tag1,Tag2,.....]; done | pending | planned
+Gerimo Server Port Linux:[Core Porting,Dependencies,Performance,Troubleshooting];done
+FileSharing:[Upload/Download,Permissions,Versioning];pending
+Gerimo App Flutter Port:[UI Porting,State Management,API Integration,Testing];planned
+Gerimo Server Port MacOS:[Core Porting,Dependencies,Performance,Troubleshooting];planned
