@@ -1,0 +1,53 @@
+name: Update APT Repo
+
+on:
+  push:
+    paths:
+      - 'docs/pool/**'  # Nur bei .deb-Änderungen
+  workflow_dispatch:  # Manuell triggerbar
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Für git-auto-commit
+
+    - name: Install Tools
+      run: sudo apt update && sudo apt install -y dpkg-dev gnupg
+
+    - name: Import GPG Key
+      env:
+        GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+        GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+      run: |
+        echo "$GPG_PRIVATE_KEY" | base64 --decode | gpg --batch --yes --import
+        # Passphrase für Signing setzen (loopback mode)
+        echo "$GPG_PASSPHRASE" | gpg --batch --pinentry-mode loopback --change-passphrase
+
+    - name: Generate Repo Metadata
+      working-directory: ./docs
+      env:
+        GPG_ID: "Gerimo <antozstudios@proton.me>"
+      run: |
+        # Packages (rekursiv scannen)
+        dpkg-scanpackages . /dev/null > Packages
+        gzip -9 < Packages > Packages.gz
+        
+        # Release
+        apt-ftparchive release . > Release
+        
+        # Signieren
+        gpg --yes --clearsign --local-user "$GPG_ID" -o InRelease Release
+        gpg --yes --detach-sign --local-user "$GPG_ID" -o Release.gpg Release
+
+    - name: Commit Changes
+      uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "Auto-update APT repo metadata"
+        file_pattern: docs/{Packages,Release,InRelease,Release.gpg,*.gz}
