@@ -1,12 +1,12 @@
 Package: gerimo
-Version: 1.0.5
+Version: 1.0.5.0
 Architecture: amd64
 Maintainer: Gerimo <gerimo-virtualtablet-more@github.io>
-Filename: pool/main/g/gerimo/gerimo_1.0.5_amd64.deb
-Size: 31386336
-MD5sum: 3ebceb6dbe1c1957764a771c771fa829
-SHA1: 0d88a09ce04d155187f02ad2a961c46772d233f2
-SHA256: d50ad8688e3c8c206c7c7fc57e9625c1847fb49c86a7db6c7a976f9b37ca0a88
+Filename: pool/main/g/gerimo/gerimo_1.0.5.0_amd64.deb
+Size: 31382178
+MD5sum: 9f7cc928ae2772d28935445d5dd293ca
+SHA1: c5a01d988013b37717a9afdccc53cf75edc4c0ec
+SHA256: 51b85585ad6e37d34d3e4061c8d6a8d7790145fdb202a6c1ce2c376ce94ea17d
 Description: Gerimo - Virtual Tablet & Input Controller
  Requires the Gerimo Android app (free on Google Play Store) to function.
  .
