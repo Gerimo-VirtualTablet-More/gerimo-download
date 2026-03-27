@@ -1859,15 +1859,20 @@ html.light .kb-win-btn {
 
               // check if scene just rolled over
               if (elapsed < 20 && ts > start + 100) {
-                curScene = (curScene + 1) % scenes.length;
-                showScene(scenes[curScene]);
-                // reset USB for when it comes back
-                if (scenes[curScene] !== 'usb') {
-                  path.style.strokeDashoffset = total;
-                  path.style.opacity = 1;
-                  plug.style.opacity = 1;
-                  plug2.style.opacity = 1;
+                if (!window.sceneJustChanged) {
+                  window.sceneJustChanged = true;
+                  curScene = (curScene + 1) % scenes.length;
+                  showScene(scenes[curScene]);
+                  // reset USB for when it comes back
+                  if (scenes[curScene] !== 'usb') {
+                    path.style.strokeDashoffset = total;
+                    path.style.opacity = 1;
+                    plug.style.opacity = 1;
+                    plug2.style.opacity = 1;
+                  }
                 }
+              } else {
+                window.sceneJustChanged = false;
               }
 
               requestAnimationFrame(tick);
