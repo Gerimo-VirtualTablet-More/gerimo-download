@@ -364,6 +364,9 @@ nav {
   background: var(--bg-primary);
 }
 
+.hero-headline {
+  width: 100%;
+}
 
 .hero-headline .word-rotate {
   display: block;
@@ -728,28 +731,24 @@ nav {
 .pen-screen-sidebar span { width:24px; height:24px; background:rgba(255,255,255,0.07); border-radius:5px; display:block; }
 .pen-screen-sidebar span:first-child { background:rgba(26,115,232,0.5); }
 .pen-screen-canvas { background:transparent; position:relative; overflow:hidden; }
-.pen-stroke-1 {
-  stroke-dasharray: 600;
-  stroke-dashoffset: 600;
-  animation: drawStroke1 2.5s ease forwards infinite;
-}
-.pen-stroke-2 {
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  animation: drawStroke2 2s ease forwards infinite;
-  animation-delay: 0.7s;
-}
-@keyframes drawStroke1 {
-  0%   { stroke-dashoffset: 600; }
-  60%  { stroke-dashoffset: 0; }
-  90%  { stroke-dashoffset: 0; opacity: 1; }
-  100% { stroke-dashoffset: 600; opacity: 0.4; }
-}
-@keyframes drawStroke2 {
-  0%   { stroke-dashoffset: 200; }
-  60%  { stroke-dashoffset: 0; }
-  90%  { stroke-dashoffset: 0; opacity: 1; }
-  100% { stroke-dashoffset: 200; opacity: 0.4; }
+.pen-letter { opacity: 0; animation: drawLetter 4s ease forwards infinite; }
+.pen-G { stroke-dasharray: 160; stroke-dashoffset: 160; animation-delay: 0.0s; }
+.pen-e { stroke-dasharray: 110; stroke-dashoffset: 110; animation-delay: 0.5s; }
+.pen-r { stroke-dasharray:  80; stroke-dashoffset:  80; animation-delay: 1.0s; }
+.pen-i { stroke-dasharray:  50; stroke-dashoffset:  50; animation-delay: 1.5s; }
+.pen-m { stroke-dasharray: 130; stroke-dashoffset: 130; animation-delay: 2.0s; }
+.pen-o { stroke-dasharray:  90; stroke-dashoffset:  90; animation-delay: 2.5s; }
+.pen-blue { stroke: #ffffff; }
+html.light .pen-blue { stroke: #1a1a1a; }
+.pen-blue2 { stroke: #1a73e8; }
+html.light .pen-blue2 { stroke: #1a73e8; }
+@keyframes drawLetter {
+  0%   { stroke-dashoffset: inherit; opacity: 0; }
+  5%   { opacity: 1; }
+  12%  { stroke-dashoffset: 0; opacity: 1; }
+  75%  { stroke-dashoffset: 0; opacity: 1; }
+  90%  { stroke-dashoffset: 0; opacity: 0.4; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
 }
 .pen-tablet-device { width:90px; height:130px; background:#1c1c1e; border-radius:12px; border:4px solid #000; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
 .pen-tablet-screen { width:74px; height:108px; background:#0f1117; border-radius:8px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; }
@@ -1544,15 +1543,80 @@ html.light .kb-win-btn {
       <div>
         <span class="feature-label">Pen Input</span>
         <h2 class="feature-title">Professional drawing.</h2>
-        <p class="feature-desc">Gerimo transmits every pen stroke, mouse click and keystroke with ultra-low latency and high precision as real PC input to your computer – perfect for Photoshop, Clip Studio Paint and more.</p>
-      <p class="feature-desc" style="margin-bottom:0">Turn your Android device into a professional graphics tablet for drawing and note-taking apps on your PC.</p>
+        <p class="feature-desc">Every pen stroke transmitted with ultra-low latency and pixel-perfect precision – seamlessly as real PC input. Perfect for Photoshop, Clip Studio Paint and more.</p>
+      <p class="feature-desc" style="margin-bottom:0">Turn your Android device into a professional graphics tablet for drawing and note-taking on your PC.</p>
       </div>
       <div class="feat-gallery">
         <div class="gallery-display" id="gallery-pen" style="display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
           <svg style="width:70%;max-width:380px;height:auto;" viewBox="0 0 300 160">
-            <path class="pen-stroke-1" d="M20,120 C45,70 70,30 110,55 C150,80 135,115 175,65 C215,15 250,40 280,30" fill="none" stroke="#1a73e8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path class="pen-stroke-2" d="M20,135 C65,128 110,122 165,126" fill="none" stroke="#ea4335" stroke-width="4" stroke-linecap="round"/>
+            <!-- G -->
+            <path class="pen-letter pen-G pen-blue" d="M72,55 C58,45 38,48 35,68 C32,88 42,108 62,108 C78,108 85,98 85,85 L70,85" fill="none" stroke="#1a73e8" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- e -->
+            <path class="pen-letter pen-e pen-blue" d="M95,90 C95,75 115,72 118,82 C121,90 110,98 95,92 C95,98 100,108 115,105" fill="none" stroke="#1a73e8" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- r -->
+            <path class="pen-letter pen-r pen-blue2" d="M128,108 L128,78 C130,70 140,68 148,72" fill="none" stroke="#1a73e8" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- i -->
+            <path class="pen-letter pen-i pen-blue2" d="M157,68 L157,108" fill="none" stroke="#1a73e8" stroke-width="14" stroke-linecap="round"/>
+            <circle class="pen-letter pen-i pen-blue2-fill" cx="157" cy="50" r="7" fill="#1a73e8"/>
+            <!-- m = erstes n -->
+            <path class="pen-letter pen-m1" d="M175,108 L175,78 C178,70 188,68 191,78 L191,108" fill="none" stroke="#ea4335" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- m = zweites n (überlappt) -->
+            <path class="pen-letter pen-m2" d="M191,108 L191,78 C194,70 204,68 207,78 L207,108" fill="none" stroke="#ea4335" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- o -->
+            <path class="pen-letter pen-o" d="M222,88 C222,72 245,72 245,88 C245,104 222,104 222,88" fill="none" stroke="#ea4335" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
+          <script>
+          (function(){
+            var letters = [
+              { cls: 'pen-G',  da: 160 },
+              { cls: 'pen-e',  da: 110 },
+              { cls: 'pen-r',  da: 80  },
+              { cls: 'pen-i',  da: 50  },
+              { cls: 'pen-m1', da: 90  },
+              { cls: 'pen-m2', da: 90  },
+              { cls: 'pen-o',  da: 90  },
+            ];
+            var drawDur = 0.5;  // seconds to draw each letter
+            var holdAll = 1.0;  // pause after all letters visible
+            var fadeDur = 0.4;  // fade out duration
+            var n = letters.length;
+            var total = n * drawDur + holdAll + fadeDur; // full cycle length
+
+            // holdEnd and fadeEnd are the same for ALL letters
+            var holdEnd = (n * drawDur + holdAll) / total;
+            var fadeEnd = 1.0;
+
+            letters.forEach(function(l, i) {
+              var da = l.da;
+              var drawStart = (i * drawDur) / total;
+              var drawEnd   = ((i + 1) * drawDur) / total;
+
+              var p = function(f){ return (f * 100).toFixed(2) + '%'; };
+
+              var kfName = 'gerimo_' + l.cls.replace('-','_');
+              var css = '@keyframes ' + kfName + ' {'
+                + p(0)               + '{ stroke-dashoffset:' + da + '; opacity:0; }'
+                + p(drawStart)       + '{ stroke-dashoffset:' + da + '; opacity:0; }'
+                + p(drawStart + 0.001) + '{ opacity:1; }'
+                + p(drawEnd)         + '{ stroke-dashoffset:0; opacity:1; }'
+                + p(holdEnd)         + '{ stroke-dashoffset:0; opacity:1; }'
+                + p(holdEnd + 0.001) + '{ stroke-dashoffset:0; opacity:1; }'
+                + p(fadeEnd)         + '{ stroke-dashoffset:0; opacity:0; }'
+              + '}';
+
+              var style = document.createElement('style');
+              style.textContent = css;
+              document.head.appendChild(style);
+
+              document.querySelectorAll('.' + l.cls).forEach(function(el) {
+                el.style.strokeDasharray = da;
+                el.style.strokeDashoffset = da;
+                el.style.opacity = 0;
+                el.style.animation = kfName + ' ' + total + 's linear 0s infinite';
+              });
+            });
+          })();
+          </script>
         </div>
       </div>
     </div>
@@ -1651,12 +1715,168 @@ html.light .kb-win-btn {
         <p class="feature-desc" style="margin-bottom:0;">Multiple monitors are fully supported, with precise input mapping for each display.</p>
       </div>
       <div class="feat-gallery">
-        <div class="gallery-display" style="display:flex;align-items:center;justify-content:center;">
-          <div style="display:flex;gap:24px;align-items:center;padding:24px;">
-            <div style="text-align:center;"><div style="width:10px;height:10px;border-radius:50%;background:#34a853;margin:0 auto 8px;box-shadow:0 0 8px #34a853;animation:phonePulse 1.5s infinite;"></div><span style="font-size:0.75rem;font-weight:700;color:#3c4043;">WLAN</span></div>
-            <div style="text-align:center;"><div style="width:10px;height:10px;border-radius:50%;background:#1a73e8;margin:0 auto 8px;box-shadow:0 0 8px #1a73e8;animation:phonePulse 1.5s infinite 0.5s;"></div><span style="font-size:0.75rem;font-weight:700;color:#3c4043;">USB</span></div>
-            <div style="text-align:center;"><div style="width:10px;height:10px;border-radius:50%;background:#9c27b0;margin:0 auto 8px;box-shadow:0 0 8px #9c27b0;animation:phonePulse 1.5s infinite 1s;"></div><span style="font-size:0.75rem;font-weight:700;color:#3c4043;">Bluetooth</span></div>
-          </div>
+        <div class="gallery-display" style="display:flex;align-items:center;justify-content:center;position:relative;">
+          <style>
+            #conn-cable-path { stroke-dasharray: 260; stroke-dashoffset: 260; animation: none; }
+
+            /* BT draw-on */
+            .conn-bt-path {
+              stroke-dasharray: 500;
+              stroke-dashoffset: 500;
+              animation: connDrawBT 2.5s ease forwards;
+            }
+            @keyframes connDrawBT {
+              0%   { stroke-dashoffset: 500; opacity: 1; }
+              60%  { stroke-dashoffset: 0; opacity: 1; }
+              90%  { stroke-dashoffset: 0; opacity: 1; }
+              100% { stroke-dashoffset: 0; opacity: 0; }
+            }
+
+            /* WiFi draw-on */
+            .conn-wifi-arc {
+              stroke-dasharray: 300;
+              stroke-dashoffset: 300;
+              animation: connDrawWifi 2.5s ease forwards;
+            }
+            .conn-wifi-arc:nth-child(2) { animation-delay: 0.2s; }
+            .conn-wifi-arc:nth-child(3) { animation-delay: 0.4s; }
+            @keyframes connDrawWifi {
+              0%   { stroke-dashoffset: 300; opacity: 1; }
+              60%  { stroke-dashoffset: 0; opacity: 1; }
+              90%  { stroke-dashoffset: 0; opacity: 1; }
+              100% { stroke-dashoffset: 0; opacity: 0; }
+            }
+            .conn-wifi-dot { animation: connFadeInOut 2.5s ease forwards; }
+            @keyframes connFadeInOut {
+              0%   { opacity: 0; }
+              10%  { opacity: 1; }
+              90%  { opacity: 1; }
+              100% { opacity: 0; }
+            }
+
+            #conn-scene-bt   { display:none; }
+            #conn-scene-wifi { display:none; }
+          </style>
+
+          <!-- USB cable scene -->
+          <svg id="conn-svg" style="width:70%;max-width:380px;height:auto;display:block;" viewBox="0 0 300 160">
+            <path id="conn-cable-path" d="M60,80 C100,80 200,80 240,80" fill="none" stroke="#ea4335" stroke-width="14" stroke-linecap="round"/>
+            <rect id="conn-plug"  x="0" y="68" width="28" height="20" rx="2" fill="white"/>
+            <rect id="conn-plug2" x="0" y="68" width="10" height="12" rx="1" fill="#cccccc"/>
+          </svg>
+
+          <!-- Bluetooth scene -->
+          <svg id="conn-scene-bt" style="width:70%;max-width:380px;height:auto;" viewBox="0 0 300 210">
+            <path class="conn-bt-path"
+              d="M 80,190 L 80,20 L 140,60 L 80,110 L 140,160 L 80,190"
+              fill="none" stroke="#1a73e8" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+
+          <!-- WiFi scene -->
+          <svg id="conn-scene-wifi" style="width:70%;max-width:380px;height:auto;" viewBox="0 0 300 160">
+            <circle class="conn-wifi-dot" cx="150" cy="118" r="10" fill="#fbbc04"/>
+            <path class="conn-wifi-arc"
+              d="M116,92 Q150,74 184,92"
+              fill="none" stroke="#fbbc04" stroke-width="14" stroke-linecap="round"/>
+            <path class="conn-wifi-arc"
+              d="M88,68 Q150,42 212,68"
+              fill="none" stroke="#fbbc04" stroke-width="14" stroke-linecap="round"/>
+            <path class="conn-wifi-arc"
+              d="M60,44 Q150,10 240,44"
+              fill="none" stroke="#fbbc04" stroke-width="14" stroke-linecap="round"/>
+          </svg>
+
+          <script>
+          (function(){
+            var path  = document.getElementById('conn-cable-path');
+            var plug  = document.getElementById('conn-plug');
+            var plug2 = document.getElementById('conn-plug2');
+            var svgUsb  = document.getElementById('conn-svg');
+            var svgBt   = document.getElementById('conn-scene-bt');
+            var svgWifi = document.getElementById('conn-scene-wifi');
+
+            var total = path.getTotalLength();
+            path.style.strokeDasharray  = total;
+            path.style.strokeDashoffset = total;
+
+            var SCENE_DUR = 2800; // ms per scene
+            var scenes = ['usb','bt','wifi'];
+            var curScene = 0;
+            var start = null;
+
+            function ease(t) {
+              return t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+            }
+
+            function restartSvgAnimations(svg) {
+              // force CSS animations to restart
+              svg.style.display = 'none';
+              void svg.offsetWidth;
+              svg.style.display = 'block';
+              svg.querySelectorAll('[class]').forEach(function(el){
+                el.style.animation = 'none';
+                void el.offsetWidth;
+                el.style.animation = '';
+              });
+            }
+
+            function showScene(name) {
+              svgUsb.style.display  = 'none';
+              svgBt.style.display   = 'none';
+              svgWifi.style.display = 'none';
+              if (name === 'usb') {
+                svgUsb.style.display = 'block';
+              } else if (name === 'bt') {
+                restartSvgAnimations(svgBt);
+              } else if (name === 'wifi') {
+                restartSvgAnimations(svgWifi);
+              }
+            }
+
+            function tick(ts) {
+              if (!start) start = ts;
+              var elapsed = (ts - start) % SCENE_DUR;
+              var t = elapsed / SCENE_DUR;
+
+              // advance scene
+              var scene = scenes[curScene];
+
+              if (scene === 'usb') {
+                var progress = t < 0.6 ? ease(t / 0.6) : 1;
+                var offset = total * (1 - progress);
+                path.style.strokeDashoffset = offset;
+                var opacity = t > 0.85 ? 1 - ((t - 0.85) / 0.15) : 1;
+                path.style.opacity  = opacity;
+                plug.style.opacity  = opacity;
+                plug2.style.opacity = opacity;
+                var drawn = total * progress;
+                var pt = path.getPointAtLength(drawn);
+                plug.setAttribute('x',  pt.x);
+                plug.setAttribute('y',  pt.y - 10);
+                plug2.setAttribute('x', pt.x + 30);
+                plug2.setAttribute('y', pt.y - 6);
+              }
+
+              // check if scene just rolled over
+              if (elapsed < 20 && ts > start + 100) {
+                curScene = (curScene + 1) % scenes.length;
+                showScene(scenes[curScene]);
+                // reset USB for when it comes back
+                if (scenes[curScene] !== 'usb') {
+                  path.style.strokeDashoffset = total;
+                  path.style.opacity = 1;
+                  plug.style.opacity = 1;
+                  plug2.style.opacity = 1;
+                }
+              }
+
+              requestAnimationFrame(tick);
+            }
+
+            showScene('usb');
+            requestAnimationFrame(tick);
+          })();
+          </script>
         </div>
       </div>
     </div>
