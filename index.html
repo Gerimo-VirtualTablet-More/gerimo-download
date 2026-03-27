@@ -3221,8 +3221,7 @@ function copyInstallCmds() {
           a.style.display = 'inline-flex';
           a.style.width = '100%';
           a.style.boxSizing = 'border-box';
-          a.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px;vertical-align:middle;flex-shrink:0;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zm-9 1H7v-2h4v2zm-3.5-4l-1.41-1.41L7.67 12l-1.59-1.59L7.5 9l3 3-3 3zm5.5 0v-2h4v2h-4z"/></svg>' + deb.name + ' download';
-          wrap.appendChild(a);
+a.innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Icons8_flat_linux.svg" width="18" height="18" style="margin-right:8px;vertical-align:middle;flex-shrink:0;">' + deb.name + ' download';          wrap.appendChild(a);
         });
         document.getElementById('side-linux-or').style.display = 'flex';
         document.getElementById('side-linux').style.display = '';
