@@ -369,22 +369,26 @@ nav {
 }
 
 .hero-headline .word-rotate {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  height: 1.2em;
+  min-height: 2.4em;
+  height: auto;
   font-size: 2.2em;
 }
 
 .hero-headline .word-rotate span {
   display: block;
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 0;
   width: 100%;
   text-align: center;
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;
+  transform: translateY(-50%);
 }
 .hero-headline .word-rotate span.active {
   opacity: 1;
@@ -395,13 +399,13 @@ nav {
 @media (max-width: 600px) and (orientation: portrait) {
   .hero-headline .word-rotate {
     font-size: 1.35em;
-    height: 2.8em;
+    min-height: 3.2em;
   }
 }
 @media (max-width: 400px) and (orientation: portrait) {
   .hero-headline .word-rotate {
     font-size: 1.15em;
-    height: 3.2em;
+    min-height: 3.6em;
   }
 }
 .hero-headline .word-rotate span:nth-child(1)  { color: #1a73e8; }
