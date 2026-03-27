@@ -364,22 +364,12 @@ nav {
   background: var(--bg-primary);
 }
 
-.hero-headline {
-  font-family: 'Google Sans Display', 'Google Sans', sans-serif;
-  font-size: clamp(2rem, 6vw, 5rem);
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -2px;
-  color: var(--text-primary);
-  margin-bottom: 28px;
-  white-space: normal;
-}
 
 .hero-headline .word-rotate {
   display: block;
   position: relative;
-  min-width: 6ch;
-  min-height: 1.15em; /* fallback height until JS measures spans */
+  
+
 }
 
 .hero-headline .word-rotate span {
@@ -388,7 +378,7 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
-  text-align: left;
+  text-align: center;
   opacity: 0;
   transition: opacity 0.5s ease;
   pointer-events: none;
@@ -944,7 +934,7 @@ html.light .distro-tooltip {
 /* CTA */
 .cta-section {
   background: var(--bg-primary);
-  padding: 40px 48px;
+
   text-align: left;
   color: var(--text-primary);
   transition: background 0.25s;
@@ -958,9 +948,9 @@ html.light .distro-tooltip {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
   letter-spacing: -1px;
-  margin-bottom: 16px;
+  
 }
-.cta-section p { font-size: 1.1rem; opacity: 0.85; margin-bottom: 40px; }
+.cta-section p { font-size: 1.1rem; opacity: 0.85;  }
 .btn-white {
   display: inline-flex;
   align-items: center;
@@ -1522,7 +1512,6 @@ html.light .kb-win-btn {
       <span>Compatible with all PC apps.</span>
     </span>
   </h1>
-  <p class="hero-sub">Turn your Android into a professional, fully customizable PC controller.</p>
   </div>
 </div>
 
