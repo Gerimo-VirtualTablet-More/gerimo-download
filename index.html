@@ -387,6 +387,20 @@ nav {
   opacity: 1;
   pointer-events: auto;
 }
+
+/* Mobile portrait: reduce font size and use dynamic height */
+@media (max-width: 600px) and (orientation: portrait) {
+  .hero-headline .word-rotate {
+    font-size: 1.35em;
+    height: 2.8em;
+  }
+}
+@media (max-width: 400px) and (orientation: portrait) {
+  .hero-headline .word-rotate {
+    font-size: 1.15em;
+    height: 3.2em;
+  }
+}
 .hero-headline .word-rotate span:nth-child(1)  { color: #1a73e8; }
 .hero-headline .word-rotate span:nth-child(2)  { color: #34a853; }
 .hero-headline .word-rotate span:nth-child(3)  { color: #ea4335; }
