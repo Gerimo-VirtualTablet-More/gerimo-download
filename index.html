@@ -368,8 +368,8 @@ nav {
 .hero-headline .word-rotate {
   display: block;
   position: relative;
-  
-
+  height: 1.2em;
+  font-size: 2.5em;
 }
 
 .hero-headline .word-rotate span {
@@ -631,7 +631,7 @@ nav {
 
 /* ── FEATURE SECTIONS ── */
 .feature-section {
-  padding: 96px 48px;
+  padding: 10px 48px;
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
@@ -1517,8 +1517,7 @@ html.light .kb-win-btn {
 
 <div class="tab-nav-wrapper">
   <div class="tab-nav">
-    <a href="javascript:void(0)" class="tab-btn active" data-tab="schnell" onclick="fcGoTo(0)">Features</a>
-    <a href="#linux" class="tab-btn tab-btn-download" data-tab="download">Download</a>
+  <!-- Features- und Download-Buttons entfernt -->
   </div>
 </div>
 
@@ -2866,13 +2865,6 @@ function fcNav(dir) {
   const spans = Array.from(container.querySelectorAll('span'));
   const texts = spans.map(s => s.textContent.trim());
   let current = 0;
-
-  // Measure tallest span to fix container height
-  spans.forEach(s => { s.style.opacity = '1'; });
-  let maxH = 0;
-  spans.forEach(s => { const h = s.offsetHeight; if (h > maxH) maxH = h; });
-  container.style.minHeight = maxH + 'px';
-  spans.forEach(s => { s.style.opacity = ''; });
 
   spans[0].classList.add('active');
   const display = spans[0];
