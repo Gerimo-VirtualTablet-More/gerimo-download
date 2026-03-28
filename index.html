@@ -395,18 +395,87 @@ nav {
   pointer-events: auto;
 }
 
-/* Mobile portrait: reduce font size and use dynamic height */
+/* ══════════════════════════════════════════════════
+   MOBILE PORTRAIT  (≤ 600px)
+   ══════════════════════════════════════════════════ */
 @media (max-width: 600px) and (orientation: portrait) {
+
+  /* ── Navigation ── */
+  nav { padding: 0 16px; height: 56px; }
+  .nav-logo { font-size: 1.15rem; }
+
+  /* ── Hero / CTA ── */
+  .cta-section { padding: 72px 16px 32px; }
+  .hero { padding: 72px 16px 32px; }
   .hero-headline .word-rotate {
     font-size: 1.35em;
     min-height: 3.2em;
   }
+  .hero-sub { font-size: 1rem; margin-bottom: 28px; }
+  .hero-btns { gap: 10px; margin-bottom: 36px; }
+  .btn-main, .btn-microsoft, .btn-linux {
+    padding: 12px 20px;
+    font-size: 0.92rem;
+  }
+  .platform-row { gap: 8px; margin-bottom: 40px; flex-wrap: wrap; justify-content: center; }
+
+  /* ── Tab navigation ── */
+  .tab-nav { padding: 0 12px; }
+  .tab-btn { padding: 14px 16px; font-size: 0.8rem; }
+  .tab-btn::after { left: 16px; right: 16px; }
+
+  /* ── Feature sections ── */
+  .feature-section,
+  .linux-inner { grid-template-columns: 1fr; gap: 28px; padding: 40px 16px; }
+  .feature-section.reverse { direction: ltr; }
+  .feature-title { font-size: clamp(1.5rem, 6vw, 2rem); }
+  .feature-desc { font-size: 0.95rem; }
+
+  /* ── Gallery display ── */
+  .gallery-display { aspect-ratio: 4/3; border-radius: 12px; }
+
+  /* ── Stats ── */
+  .stats-section { grid-template-columns: 1fr; }
+  .stat-box { padding: 32px 20px; }
+  .stat-num { font-size: 2.6rem; }
+
+  /* ── Reviews ── */
+  .reviews-section { padding: 40px 16px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+
+  /* ── Linux section ── */
+  .linux-section { padding: 0; }
+  .os-toggle { width: 100%; }
+  .os-tab { flex: 1; justify-content: center; padding: 10px 12px; font-size: 0.85rem; }
+  .terminal { font-size: 0.72rem; }
+  .terminal-body { word-break: break-all; }
+
+  /* ── Roadmap ── */
+  .roadmap-section { padding: 40px 16px; }
+
+  /* ── Footer ── */
+  footer { padding: 24px 16px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .footer-links { flex-wrap: wrap; gap: 12px; }
 }
+
+/* ══════════════════════════════════════════════════
+   SMALL PHONES  (≤ 400px)
+   ══════════════════════════════════════════════════ */
 @media (max-width: 400px) and (orientation: portrait) {
   .hero-headline .word-rotate {
     font-size: 1.15em;
     min-height: 3.6em;
   }
+  .btn-main, .btn-microsoft, .btn-linux {
+    padding: 11px 16px;
+    font-size: 0.88rem;
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-btns { flex-direction: column; align-items: stretch; }
+  .feature-title { font-size: clamp(1.3rem, 7vw, 1.7rem); }
+  .stat-num { font-size: 2.2rem; }
+  .tab-btn { padding: 12px 10px; font-size: 0.75rem; }
 }
 .hero-headline .word-rotate span:nth-child(1)  { color: #1a73e8; }
 .hero-headline .word-rotate span:nth-child(2)  { color: #34a853; }
@@ -1383,7 +1452,11 @@ html.light [data-k] {
 html.light [data-k] span {
   color: #ffffff !important;
 }
+@keyframes keyTapDark  { 0%,100%{background:#ffffff;transform:scale(1);} 50%{background:#1a73e8;transform:scale(0.85);} }
 @keyframes keyTapLight { 0%,100%{background:#3a3a3a;transform:scale(1);} 50%{background:#1a73e8;transform:scale(0.88);} }
+[data-k].tapping {
+  animation: keyTapDark 0.14s ease forwards;
+}
 html.light [data-k].tapping {
   animation-name: keyTapLight !important;
 }
@@ -1973,8 +2046,6 @@ html.light .kb-win-btn {
         <div class="gallery-display kb-slide-gallery" style="display:flex;align-items:center;justify-content:center;gap:20px;padding:16px;position:relative;overflow:hidden;">
 
           <style>
-            @keyframes kbPkt { 0%,100%{opacity:0.15;transform:translateX(0) scale(0.7);} 50%{opacity:1;transform:translateX(2px) scale(1.15);} }
-            @keyframes keyTap { 0%,100%{background:#3a3a3a;transform:scale(1);} 50%{background:#1a73e8;transform:scale(0.88);} }
             html.light .kb-slide-gallery [data-k] { background: #3a3a3a !important; }
             html.light .kb-slide-gallery [data-k] span { color: #ffffff !important; }
             .kb-phone-body { background: #c8c8c8; border-color: #000 !important; }
@@ -2232,7 +2303,6 @@ html.light .kb-win-btn {
   <div class="footer-links">
     <a href="https://gerimo-virtualtablet-more.github.io/gerimo-privacy-policy/">Privacy Policy</a>
     <a href="https://discord.gg/VAd5Xdnecn" target="_blank" rel="noopener">Contact</a>
-    <a href="https://play.google.com/store/apps/details?id=com.antozstudios.gerimo&utm_source=info">Google Play</a>
     <a href="https://play.google.com/store/apps/details?id=com.antozstudios.gerimo&utm_source=info" style="display:inline-flex;align-items:center;"><img src="google-play.svg" alt="Google Play" width="18" height="18" style="margin-right:6px;vertical-align:middle;"/>Google Play</a>
   </div>
 </footer>
@@ -2504,19 +2574,13 @@ html.light .kb-win-btn {
           plusRow.style.cssText += ';opacity:0;transition:opacity 0.2s;';
 
           setTimeout(function() { label.style.opacity = '1'; }, 30);
-          setTimeout(function() {
-            entriesEl.appendChild(modDrop);
-            setTimeout(function() { modDrop.style.opacity = '1'; }, 20);
-          }, 100);
-          setTimeout(function() {
-            entriesEl.appendChild(keyDrop);
-            setTimeout(function() { keyDrop.style.opacity = '1'; }, 20);
-          }, 200);
+          setTimeout(function() { entriesEl.appendChild(modDrop); modDrop.style.opacity = '1'; }, 120);
+          setTimeout(function() { entriesEl.appendChild(keyDrop); keyDrop.style.opacity = '1'; }, 220);
           setTimeout(function() {
             entriesEl.appendChild(plusRow);
-            setTimeout(function() { plusRow.style.opacity = '1'; }, 20);
+            plusRow.style.opacity = '1';
             if (done) setTimeout(done, 250);
-          }, 300);
+          }, 320);
         }
 
         // ── Modal animation helpers ──
@@ -2572,27 +2636,20 @@ html.light .kb-win-btn {
         function runModalAnim(recDot, cb) {
           resetModal();
           showModal(function() {
+            // t=0: modal open (+380ms from showModal)
+            setTimeout(function() { erkannt.textContent = 'Detected: VOLUME DOWN ✓'; }, 200);
             setTimeout(function() {
-              erkannt.textContent = 'Detected: VOLUME DOWN ✓';
-              setTimeout(function() {
-                flashBox(katBox, 'Common Keys', katVal, function() {
-                  setTimeout(function() {
-                    flashBox(tasteBox, 'VOLUME DOWN', tasteVal, function() {
-                      setTimeout(function() {
-                        flashBox(verhBox, 'Click', verhVal, function() {
-                          setTimeout(function() {
-                            if (recDot) recDot.setAttribute('fill', '#34a853');
-                            setTimeout(function() {
-                              hideModal(cb);
-                            }, 900);
-                          }, 400);
-                        });
-                      }, 350);
-                    });
-                  }, 350);
+              flashBox(katBox, 'Common Keys', katVal, function() {
+                flashBox(tasteBox, 'VOLUME DOWN', tasteVal, function() {
+                  flashBox(verhBox, 'Click', verhVal, function() {
+                    setTimeout(function() {
+                      if (recDot) recDot.setAttribute('fill', '#34a853');
+                      setTimeout(function() { hideModal(cb); }, 900);
+                    }, 400);
+                  });
                 });
-              }, 500);
-            }, 200);
+              });
+            }, 700);
           });
         }
 
@@ -2878,19 +2935,17 @@ html.light .kb-win-btn {
             var pi = 0, ci = 0, deleting = false, started = false;
 
             function flashKey(ch) {
-              var k = ch.toLowerCase();
-              var el = keyMap[k];
+              var el = keyMap[ch.toLowerCase()];
               if (!el) return;
-              var isLight = document.documentElement.classList.contains('light');
-              el.style.background = '#1a73e8';
-              el.style.transform = 'scale(0.85)';
-              setTimeout(function(){ el.style.background = ''; el.style.transform = ''; }, 140);
+              el.classList.remove('tapping');
+              void el.offsetWidth; // force reflow to restart animation
+              el.classList.add('tapping');
+              setTimeout(function(){ el.classList.remove('tapping'); }, 140);
             }
 
             function tick() {
               var phrase = phrases[pi];
-              var isLight = document.documentElement.classList.contains('light');
-              var cursorColor = isLight ? '#1a1a1a' : '#e8e8e8';
+              var cursorColor = document.documentElement.classList.contains('light') ? '#1a1a1a' : '#e8e8e8';
               if (!deleting) {
                 var ch = phrase[ci];
                 ci++;
@@ -2915,30 +2970,31 @@ html.light .kb-win-btn {
           })();
 
 // OS switcher in Linux section
+var _osWinPanel = null, _osLinPanel = null, _osSideWin = null, _osSideLin = null, _osSideLinOr = null;
 function switchOS(os, btn) {
   // Update toggle button states
   var toggleBtns = btn.closest('.os-toggle').querySelectorAll('.os-tab');
   toggleBtns.forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
 
-  var winPanel = document.getElementById('os-windows');
-  var linPanel = document.getElementById('os-linux');
-  var sideWin  = document.getElementById('side-windows');
-  var sideLin  = document.getElementById('side-linux');
-  var sideLinOr = document.getElementById('side-linux-or');
+  if (!_osWinPanel) { _osWinPanel = document.getElementById('os-windows'); }
+  if (!_osLinPanel) { _osLinPanel = document.getElementById('os-linux'); }
+  if (!_osSideWin)  { _osSideWin  = document.getElementById('side-windows'); }
+  if (!_osSideLin)  { _osSideLin  = document.getElementById('side-linux'); }
+  if (!_osSideLinOr){ _osSideLinOr= document.getElementById('side-linux-or'); }
 
   if (os === 'windows') {
-    if (winPanel) winPanel.style.display = '';
-    if (linPanel) linPanel.style.display = 'none';
-    if (sideWin)  sideWin.style.display  = '';
-    if (sideLin)  sideLin.style.display  = 'none';
-    if (sideLinOr) sideLinOr.style.display = 'none';
+    if (_osWinPanel) _osWinPanel.style.display = '';
+    if (_osLinPanel) _osLinPanel.style.display = 'none';
+    if (_osSideWin)  _osSideWin.style.display  = '';
+    if (_osSideLin)  _osSideLin.style.display  = 'none';
+    if (_osSideLinOr) _osSideLinOr.style.display = 'none';
   } else {
-    if (winPanel) winPanel.style.display = 'none';
-    if (linPanel) linPanel.style.display = '';
-    if (sideWin)  sideWin.style.display  = 'none';
-    if (sideLin)  sideLin.style.display  = 'flex';
-    if (sideLinOr) sideLinOr.style.display = 'flex';
+    if (_osWinPanel) _osWinPanel.style.display = 'none';
+    if (_osLinPanel) _osLinPanel.style.display = '';
+    if (_osSideWin)  _osSideWin.style.display  = 'none';
+    if (_osSideLin)  _osSideLin.style.display  = 'flex';
+    if (_osSideLinOr) _osSideLinOr.style.display = 'flex';
   }
 }
 
@@ -2969,36 +3025,49 @@ function switchOS(os, btn) {
 // Features Carousel
 var fcCurrent = 0;
 var fcTotal = 5;
+var _fcSlides = null, _fcDots = null, _fcTabBtns = null, _fcPrev = null, _fcNext = null;
+var _fcTabMap = ['schnell','ai','verbindung','gesten','tastatur'];
+var _fcTabByName = {};
+
+function _fcInit() {
+  if (_fcSlides) return;
+  _fcSlides = [];
+  for (var i = 0; i < fcTotal; i++) {
+    _fcSlides.push(document.getElementById('fc-' + i));
+  }
+  _fcDots    = Array.from(document.querySelectorAll('.fc-dot'));
+  _fcTabBtns = Array.from(document.querySelectorAll('.tab-btn[data-tab]'));
+  _fcPrev    = document.getElementById('fc-prev');
+  _fcNext    = document.getElementById('fc-next');
+  _fcTabMap.forEach(function(name) {
+    _fcTabByName[name] = document.querySelector('.tab-btn[data-tab="' + name + '"]');
+  });
+}
 
 function fcGoTo(idx) {
-  // hide current slide
-  var oldSlide = document.getElementById('fc-' + fcCurrent);
-  if (oldSlide) oldSlide.classList.remove('active');
+  _fcInit();
 
-  // remove active from all dots and tabs
-  document.querySelectorAll('.fc-dot').forEach(function(d, i) {
-    d.classList.toggle('active', i === idx);
-  });
-  document.querySelectorAll('.tab-btn[data-tab]').forEach(function(t) {
-    t.classList.remove('active');
-  });
-  var tabMap = ['schnell','ai','verbindung','gesten','tastatur'];
-  if (idx < tabMap.length) {
-    var activeTab = document.querySelector('.tab-btn[data-tab="' + tabMap[idx] + '"]');
+  // hide current slide
+  if (_fcSlides[fcCurrent]) _fcSlides[fcCurrent].classList.remove('active');
+
+  // update dots
+  _fcDots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+
+  // update tabs
+  _fcTabBtns.forEach(function(t) { t.classList.remove('active'); });
+  if (idx < _fcTabMap.length) {
+    var activeTab = _fcTabByName[_fcTabMap[idx]];
     if (activeTab) activeTab.classList.add('active');
   }
 
   fcCurrent = idx;
 
   // show new slide
-  var newSlide = document.getElementById('fc-' + fcCurrent);
-  if (newSlide) newSlide.classList.add('active');
+  if (_fcSlides[fcCurrent]) _fcSlides[fcCurrent].classList.add('active');
 
   // toggle arrows
-  var prev = document.getElementById('fc-prev');
-  var next = document.getElementById('fc-next');
-  if (prev) prev.style.display = fcCurrent === 0 ? 'none' : 'flex';
-  if (next) next.style.display = fcCurrent === fcTotal - 1 ? 'none' : 'flex';
+  if (_fcPrev) _fcPrev.style.display = fcCurrent === 0 ? 'none' : 'flex';
+  if (_fcNext) _fcNext.style.display = fcCurrent === fcTotal - 1 ? 'none' : 'flex';
 }
 
 function fcNav(dir) {
@@ -3158,43 +3227,45 @@ function switchTab(btn, gallery, idx) {
     .forEach((b, i) => b.classList.toggle('active', i === idx));
 }
 
-const tabBtns = document.querySelectorAll('.tab-btn');
+const tabBtns = Array.from(document.querySelectorAll('.tab-btn'));
 const sections = ['schnell', 'ai', 'verbindung', 'gesten'];
+const sectionEls = sections.map(id => document.getElementById(id));
 
+let _scrollRafPending = false;
 window.addEventListener('scroll', () => {
-  let cur = '';
-
-  sections.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) {
-      const rect = el.getBoundingClientRect();
-      const offset = 150; // adjust as needed
-      if (rect.top <= offset && rect.bottom > offset) {
-        cur = id;
+  if (_scrollRafPending) return;
+  _scrollRafPending = true;
+  requestAnimationFrame(() => {
+    _scrollRafPending = false;
+    let cur = '';
+    sectionEls.forEach((el, i) => {
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= 150 && rect.bottom > 150) cur = sections[i];
       }
+    });
+    if (cur) {
+      tabBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.target === cur);
+      });
     }
   });
-
-  if (cur) {
-    tabBtns.forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.target === cur);
-    });
-  }
-});
+}, { passive: true });
 
 // ── LINUX COPY COMMANDS ──
+var _copyLabel = null, _copyBtn = null;
 function copyInstallCmds() {
   var cmds = 'curl -fsSL https://gerimo.info/docs/KEY.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/gerimo.gpg > /dev/null && echo "deb [signed-by=/etc/apt/trusted.gpg.d/gerimo.gpg] https://gerimo.info/docs/ ./" | sudo tee /etc/apt/sources.list.d/gerimo.list && sudo apt update && sudo apt install gerimo';
   navigator.clipboard.writeText(cmds).then(function() {
-    var label = document.getElementById('copy-label');
-    var btn = document.getElementById('copy-btn');
-    label.textContent = 'Copied!';
-    btn.style.background = 'rgba(52,168,83,0.25)';
-    btn.style.color = '#34a853';
+    if (!_copyLabel) _copyLabel = document.getElementById('copy-label');
+    if (!_copyBtn)   _copyBtn   = document.getElementById('copy-btn');
+    _copyLabel.textContent = 'Copied!';
+    _copyBtn.style.background = 'rgba(52,168,83,0.25)';
+    _copyBtn.style.color = '#34a853';
     setTimeout(function() {
-      label.textContent = 'Copy';
-      btn.style.background = '';
-      btn.style.color = '';
+      _copyLabel.textContent = 'Copy';
+      _copyBtn.style.background = '';
+      _copyBtn.style.color = '';
     }, 2000);
   });
 }
